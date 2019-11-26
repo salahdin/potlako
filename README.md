@@ -1,2 +1,2 @@
 # potlako-plus
-EDC Potlako Plua
+EDC Potlako Plus
