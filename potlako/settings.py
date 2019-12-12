@@ -10,11 +10,27 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
+import configparser
 import os
+import sys
+
+from django.core.management.color import color_style
+
+# from .logging import LOGGING
+
+style = color_style()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+APP_NAME = 'potlako'
+SITE_ID = 40
+
+ETC_DIR = '/Users/coulsonkgathi/etc'
+
+LOGIN_REDIRECT_URL = 'home_url'
+
+INDEX_PAGE = 'td.bhp.org.bw:8000'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -25,7 +41,16 @@ SECRET_KEY = 'o(^0$9zu2w5eby-^x&dd441d(@*#(+($can2uomfq%o(@p-fm+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', 'potlako-plus.bhp.org.bw', '127.0.0.1']
+
+CONFIG_FILE = f'{APP_NAME}.conf'
+
+CONFIG_PATH = os.path.join(ETC_DIR, APP_NAME, CONFIG_FILE)
+sys.stdout.write(style.SUCCESS(f'  * Reading config from {CONFIG_FILE}\n'))
+
+
+config = configparser.RawConfigParser()
+config.read(os.path.join(CONFIG_PATH))
 
 
 # Application definition
@@ -37,6 +62,18 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_crypto_fields.apps.AppConfig',
+    'django_extensions',
+    'simple_history',
+    'corsheaders',
+    'django_js_reverse',
+    'rest_framework',
+    'rest_framework.authtoken',
+    'edc_device.apps.AppConfig',
+    'edc_navbar.apps.AppConfig',
+    'potlako.apps.EdcBaseAppConfig',
+    'potlako.apps.EdcProtocolAppConfig',
+    'potlako.apps.AppConfig'
 ]
 
 MIDDLEWARE = [
@@ -113,8 +150,38 @@ USE_L10N = True
 
 USE_TZ = True
 
+SITE_CODE = '40'
+DEFAULT_STUDY_SITE = '40'
+REVIEWER_SITE_ID = 41
+
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.0/howto/static-files/
-
+# https://docs.djangoproject.com/en/2.1/howto/static-files/
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'potlako', 'static')
+
+
+# dashboards
+DASHBOARD_URL_NAMES = {
+#     'subject_models_url': 'subject_models_url',
+#     'subject_listboard_url': 'potlako_dashboard:subject_listboard_url',
+#     'screening_listboard_url': 'potlako_dashboard:screening_listboard_url',
+#     'subject_dashboard_url': 'potlako_dashboard:subject_dashboard_url',
+}
+
+LAB_DASHBOARD_URL_NAMES = {}
+
+DASHBOARD_BASE_TEMPLATES = {
+#     'listboard_base_template': 'potlako/base.html',
+#     'dashboard_base_template': 'potlako/base.html',
+#     'screening_listboard_template': 'potlako_dashboard/screening/listboard.html',
+#     'subject_listboard_template': 'potlako_dashboard/subject/listboard.html',
+#     'subject_dashboard_template': 'potlako_dashboard/subject/dashboard.html',
+}
+
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
+GIT_DIR = BASE_DIR
+
+COUNTRY = 'botswana'
