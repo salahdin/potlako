@@ -10,14 +10,13 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
-import configparser
 import os
 import sys
 
+import configparser
 from django.core.management.color import color_style
 
 # from .logging import LOGGING
-
 style = color_style()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -48,10 +47,8 @@ CONFIG_FILE = f'{APP_NAME}.conf'
 CONFIG_PATH = os.path.join(ETC_DIR, APP_NAME, CONFIG_FILE)
 sys.stdout.write(style.SUCCESS(f'  * Reading config from {CONFIG_FILE}\n'))
 
-
 config = configparser.RawConfigParser()
 config.read(os.path.join(CONFIG_PATH))
-
 
 # Application definition
 
@@ -62,6 +59,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+     'django.contrib.sites',
     'django_crypto_fields.apps.AppConfig',
     'django_extensions',
     'simple_history',
@@ -73,6 +71,7 @@ INSTALLED_APPS = [
     'edc_navbar.apps.AppConfig',
     'potlako.apps.EdcBaseAppConfig',
     'potlako.apps.EdcProtocolAppConfig',
+    'potlako_subject.apps.AppConfig',
     'potlako.apps.AppConfig'
 ]
 
@@ -106,7 +105,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'potlako.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
@@ -114,9 +112,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+    },
 
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -136,7 +134,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
@@ -154,14 +151,12 @@ SITE_CODE = '40'
 DEFAULT_STUDY_SITE = '40'
 REVIEWER_SITE_ID = 41
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'potlako', 'static')
-
 
 # dashboards
 DASHBOARD_URL_NAMES = {
