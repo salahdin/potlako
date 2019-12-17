@@ -29,7 +29,7 @@ ETC_DIR = '/etc/'
 
 LOGIN_REDIRECT_URL = 'home_url'
 
-INDEX_PAGE = 'potlako-plus.bhp.org.bw8000'
+INDEX_PAGE = 'potlako-plus.bhp.org.bw:8000'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
