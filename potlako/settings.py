@@ -59,7 +59,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-     'django.contrib.sites',
+    'django.contrib.sites',
     'django_crypto_fields.apps.AppConfig',
     'django_extensions',
     'simple_history',
@@ -67,10 +67,16 @@ INSTALLED_APPS = [
     'django_js_reverse',
     'rest_framework',
     'rest_framework.authtoken',
+    'edc_appointment.apps.AppConfig',
+    'edc_dashboard.apps.AppConfig',
     'edc_device.apps.AppConfig',
+    'edc_lab.apps.AppConfig',
     'edc_navbar.apps.AppConfig',
+    'edc_subject_dashboard.apps.AppConfig',
     'potlako.apps.EdcBaseAppConfig',
     'potlako.apps.EdcProtocolAppConfig',
+    'potlako.apps.EdcTimepointAppConfig',
+    'potlako_dashboard.apps.AppConfig',
     'potlako_subject.apps.AppConfig',
     'potlako.apps.AppConfig'
 ]
@@ -78,11 +84,14 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.contrib.sites.middleware.CurrentSiteMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'edc_dashboard.middleware.DashboardMiddleware',
+    'edc_subject_dashboard.middleware.DashboardMiddleware',
 ]
 
 ROOT_URLCONF = 'potlako.urls'
@@ -152,7 +161,7 @@ DEFAULT_STUDY_SITE = '40'
 REVIEWER_SITE_ID = 41
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/2.1/howto/static-files/
+# https://docs.djangoproject.com/en/3.0/howto/static-files/
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 STATIC_URL = '/static/'
@@ -160,20 +169,19 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'potlako', 'static')
 
 # dashboards
 DASHBOARD_URL_NAMES = {
-#     'subject_models_url': 'subject_models_url',
-#     'subject_listboard_url': 'potlako_dashboard:subject_listboard_url',
-#     'screening_listboard_url': 'potlako_dashboard:screening_listboard_url',
-#     'subject_dashboard_url': 'potlako_dashboard:subject_dashboard_url',
+    'subject_listboard_url': 'potlako_dashboard:subject_listboard_url',
+    'screening_listboard_url': 'potlako_dashboard:screening_listboard_url',
+    'subject_dashboard_url': 'potlako_dashboard:subject_dashboard_url',
 }
 
 LAB_DASHBOARD_URL_NAMES = {}
 
 DASHBOARD_BASE_TEMPLATES = {
-#     'listboard_base_template': 'potlako/base.html',
-#     'dashboard_base_template': 'potlako/base.html',
-#     'screening_listboard_template': 'potlako_dashboard/screening/listboard.html',
-#     'subject_listboard_template': 'potlako_dashboard/subject/listboard.html',
-#     'subject_dashboard_template': 'potlako_dashboard/subject/dashboard.html',
+    'listboard_base_template': 'potlako/base.html',
+    'dashboard_base_template': 'potlako/base.html',
+    'screening_listboard_template': 'potlako_dashboard/screening/listboard.html',
+    'subject_listboard_template': 'potlako_dashboard/subject/listboard.html',
+    'subject_dashboard_template': 'potlako_dashboard/subject/dashboard.html',
 }
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'

@@ -9,6 +9,6 @@ potlako.append_item(
         name='potlako_subject',
         label='Subjects',
         fa_icon='far fa-user-circle',
-        url_name='home_url')) #settings.DASHBOARD_URL_NAMES.get('subject_listboard_url')))
+        url_name=settings.DASHBOARD_URL_NAMES.get('subject_listboard_url')))
 
 site_navbars.register(potlako)

@@ -32,13 +32,15 @@ urlpatterns = [
 
     path('administration/', AdministrationView.as_view(),
          name='administration_url'),
-    path('admin/potlako_subject/', RedirectView.as_view(url='admin/potlako_subject/'),
+    path('admin/potlako_subject/',
+         RedirectView.as_view(url='admin/potlako_subject/'),
          name='potlako_subject_models_url'),
 
     path('edc_base/', include('edc_base.urls')),
     path('edc_device/', include('edc_device.urls')),
     path('edc_protocol/', include('edc_protocol.urls')),
     path('potlako_subject/', include('potlako_subject.urls')),
+    path('subject/', include('potlako_dashboard.urls')),
 
     path('switch_sites/', LogoutView.as_view(next_page=settings.INDEX_PAGE),
          name='switch_sites_url'),
