@@ -25,11 +25,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 APP_NAME = 'potlako'
 SITE_ID = 40
 
-ETC_DIR = '/Users/coulsonkgathi/etc'
+ETC_DIR = '/etc/'
 
 LOGIN_REDIRECT_URL = 'home_url'
 
-INDEX_PAGE = 'td.bhp.org.bw:8000'
+INDEX_PAGE = 'potlako-plus.bhp.org.bw:8000'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -118,9 +118,15 @@ WSGI_APPLICATION = 'potlako.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     },
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'OPTIONS': {
+            'read_default_file': os.path.join(ETC_DIR, APP_NAME, 'mysql.conf'),
+        },
     },
 
 }
