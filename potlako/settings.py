@@ -67,12 +67,16 @@ INSTALLED_APPS = [
     'django_js_reverse',
     'rest_framework',
     'rest_framework.authtoken',
+    'edc_action_item.apps.AppConfig',
     'edc_appointment.apps.AppConfig',
     'edc_dashboard.apps.AppConfig',
     'edc_device.apps.AppConfig',
     'edc_lab.apps.AppConfig',
+    'edc_locator.apps.AppConfig',
     'edc_navbar.apps.AppConfig',
+    'edc_prn.apps.AppConfig',
     'edc_subject_dashboard.apps.AppConfig',
+    'edc_visit_schedule.apps.AppConfig',
     'potlako.apps.EdcBaseAppConfig',
     'potlako.apps.EdcProtocolAppConfig',
     'potlako.apps.EdcTimepointAppConfig',
@@ -116,12 +120,11 @@ WSGI_APPLICATION = 'potlako.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-
 DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     },
+    #     'default': {
+    #         'ENGINE': 'django.db.backends.sqlite3',
+    #         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    #     },
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'OPTIONS': {

@@ -39,6 +39,7 @@ urlpatterns = [
     path('edc_base/', include('edc_base.urls')),
     path('edc_device/', include('edc_device.urls')),
     path('edc_protocol/', include('edc_protocol.urls')),
+    path('edc_visit_schedule/', include('edc_visit_schedule.urls')),
     path('potlako_subject/', include('potlako_subject.urls')),
     path('subject/', include('potlako_dashboard.urls')),
 
