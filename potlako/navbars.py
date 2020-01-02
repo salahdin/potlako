@@ -6,6 +6,13 @@ potlako = Navbar(name='potlako')
 
 potlako.append_item(
     NavbarItem(
+        name='eligible_subject',
+        label='Subject Screening',
+        fa_icon='fa-user-plus',
+        url_name=settings.DASHBOARD_URL_NAMES.get('screening_listboard_url')))
+
+potlako.append_item(
+    NavbarItem(
         name='potlako_subject',
         label='Subjects',
         fa_icon='far fa-user-circle',

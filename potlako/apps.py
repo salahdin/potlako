@@ -6,6 +6,7 @@ from edc_appointment.constants import COMPLETE_APPT
 from edc_base.apps import AppConfig as BaseEdcBaseAppConfig
 from edc_device.apps import AppConfig as BaseEdcDeviceAppConfig
 from edc_device.constants import CENTRAL_SERVER
+from edc_identifier.apps import AppConfig as BaseEdcIdentifierAppConfig
 from edc_protocol.apps import AppConfig as BaseEdcProtocolAppConfig
 from edc_timepoint.apps import AppConfig as BaseEdcTimepointAppConfig
 from edc_timepoint.timepoint import Timepoint
@@ -38,6 +39,10 @@ class EdcBaseAppConfig(BaseEdcBaseAppConfig):
 class EdcDeviceAppConfig(BaseEdcDeviceAppConfig):
     device_role = CENTRAL_SERVER
     device_id = '99'
+
+
+class EdcIdentifierAppConfig(BaseEdcIdentifierAppConfig):
+    identifier_prefix = '132'
 
 
 class EdcTimepointAppConfig(BaseEdcTimepointAppConfig):

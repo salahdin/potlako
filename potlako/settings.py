@@ -75,11 +75,13 @@ INSTALLED_APPS = [
     'edc_locator.apps.AppConfig',
     'edc_navbar.apps.AppConfig',
     'edc_prn.apps.AppConfig',
+    'edc_consent.apps.AppConfig',
     'edc_subject_dashboard.apps.AppConfig',
     'edc_visit_schedule.apps.AppConfig',
     'potlako.apps.EdcBaseAppConfig',
     'potlako.apps.EdcProtocolAppConfig',
     'potlako.apps.EdcTimepointAppConfig',
+    'potlako.apps.EdcIdentifierAppConfig',
     'potlako_dashboard.apps.AppConfig',
     'potlako_subject.apps.AppConfig',
     'potlako.apps.AppConfig'
