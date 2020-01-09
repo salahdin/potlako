@@ -81,6 +81,7 @@ INSTALLED_APPS = [
     'edc_consent.apps.AppConfig',
     'edc_subject_dashboard.apps.AppConfig',
     'edc_visit_schedule.apps.AppConfig',
+    'edc_registration.apps.AppConfig',
     'potlako.apps.EdcBaseAppConfig',
     'potlako.apps.EdcProtocolAppConfig',
     'potlako.apps.EdcTimepointAppConfig',
@@ -162,6 +163,10 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
+
+LANGUAGES = (
+    ('tn', 'Setswana'),
+    ('en', 'English'))
 
 TIME_ZONE = 'UTC'
 
