@@ -73,8 +73,6 @@ INSTALLED_APPS = [
     'edc_dashboard.apps.AppConfig',
     'edc_device.apps.AppConfig',
     'edc_lab.apps.AppConfig',
-    'edc_lab_dashboard.apps.AppConfig',
-    'edc_label.apps.AppConfig',
     'edc_locator.apps.AppConfig',
     'edc_navbar.apps.AppConfig',
     'edc_prn.apps.AppConfig',
@@ -101,7 +99,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'edc_dashboard.middleware.DashboardMiddleware',
-    'edc_lab_dashboard.middleware.DashboardMiddleware',
     'edc_subject_dashboard.middleware.DashboardMiddleware',
 ]
 
