@@ -29,7 +29,7 @@ git+https://github.com/botswana-harvard/edc-subject-dashboard.git@develop#egg=ed
 git+https://github.com/botswana-harvard/edc-timepoint.git@develop#egg=edc_timepoint
 git+https://github.com/botswana-harvard/edc-visit-schedule.git@develop#egg=edc_visit_schedule
 git+https://github.com/potlako-plus/potlako-dashboard.git@develop#egg=potlako_dashboard
+git+https://github.com/potlako-plus/potlako-prn.git@develop#egg=potlako_prn
 git+https://github.com/potlako-plus/potlako-subject.git@develop#egg=potlako_subject
-git+https://github.com/botswana-harvard/edc-reports@develop#egg=edc_reports
 django-cors-headers
 djangorestframework
