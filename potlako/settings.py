@@ -87,6 +87,7 @@ INSTALLED_APPS = [
     'potlako_dashboard.apps.AppConfig',
     'potlako_prn.apps.AppConfig',
     'potlako_subject.apps.AppConfig',
+    'potlako_visit_schedule.apps.AppConfig'
     'potlako.apps.AppConfig'
 ]
 
