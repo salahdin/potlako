@@ -69,9 +69,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'edc_action_item.apps.AppConfig',
-    'edc_appointment.apps.AppConfig',
     'edc_dashboard.apps.AppConfig',
-    'edc_device.apps.AppConfig',
     'edc_lab.apps.AppConfig',
     'edc_locator.apps.AppConfig',
     'edc_navbar.apps.AppConfig',
@@ -80,14 +78,18 @@ INSTALLED_APPS = [
     'edc_subject_dashboard.apps.AppConfig',
     'edc_visit_schedule.apps.AppConfig',
     'edc_registration.apps.AppConfig',
-    'potlako.apps.EdcBaseAppConfig',
-    'potlako.apps.EdcProtocolAppConfig',
-    'potlako.apps.EdcTimepointAppConfig',
+    'edc_timepoint.apps.AppConfig',
+    'potlako_visit_schedule',
     'potlako.apps.EdcIdentifierAppConfig',
     'potlako_dashboard.apps.AppConfig',
     'potlako_prn.apps.AppConfig',
     'potlako_subject.apps.AppConfig',
-    'potlako_visit_schedule.apps.AppConfig',
+    'potlako.apps.EdcAppointmentAppConfig',
+    'potlako.apps.EdcBaseAppConfig',
+    'potlako.apps.EdcDeviceAppConfig',
+    'potlako.apps.EdcProtocolAppConfig',
+    'potlako.apps.EdcVisitTrackingAppConfig',
+    'potlako.apps.EdcFacilityAppConfig',
     'potlako.apps.AppConfig'
 ]
 
@@ -206,4 +208,7 @@ DASHBOARD_BASE_TEMPLATES = {
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 GIT_DIR = BASE_DIR
 
+# edc_facility
+HOLIDAY_FILE = os.path.join(BASE_DIR, 'holidays.csv')
+COUNTRY = 'botswana'
 COUNTRY = 'botswana'
