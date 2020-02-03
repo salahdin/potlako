@@ -77,7 +77,6 @@ INSTALLED_APPS = [
     'edc_prn.apps.AppConfig',
     'edc_consent.apps.AppConfig',
     'edc_subject_dashboard.apps.AppConfig',
-    'edc_visit_tracking.apps.AppConfig',
     'edc_visit_schedule.apps.AppConfig',
     'edc_registration.apps.AppConfig',
     'edc_timepoint.apps.AppConfig',

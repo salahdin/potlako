@@ -33,6 +33,8 @@ git+https://github.com/botswana-harvard/edc-visit-tracking.git@develop#egg=edc_v
 git+https://github.com/potlako-plus/potlako-dashboard.git@develop#egg=potlako_dashboard
 git+https://github.com/potlako-plus/potlako-prn.git@develop#egg=potlako_prn
 git+https://github.com/potlako-plus/potlako-subject.git@develop#egg=potlako_subject
+git+https://github.com/potlako-plus/potlako-visit-schedule.git@develop#egg=potlako_visit_schedule
+git+https://github.com/potlako-plus/potlako-prn.git@develop#egg=potlako_prn
 git+https://github.com/botswana-harvard/edc-reports@develop#egg=edc_reports
 django-import-export
 django-cors-headers
