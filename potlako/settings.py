@@ -70,9 +70,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'edc_action_item.apps.AppConfig',
-    'edc_appointment.apps.AppConfig',
     'edc_dashboard.apps.AppConfig',
-    'edc_device.apps.AppConfig',
     'edc_lab.apps.AppConfig',
     'edc_locator.apps.AppConfig',
     'edc_navbar.apps.AppConfig',
@@ -82,12 +80,18 @@ INSTALLED_APPS = [
     'edc_visit_tracking.apps.AppConfig',
     'edc_visit_schedule.apps.AppConfig',
     'edc_registration.apps.AppConfig',
-    'potlako.apps.EdcBaseAppConfig',
-    'potlako.apps.EdcProtocolAppConfig',
-    'potlako.apps.EdcTimepointAppConfig',
+    'edc_timepoint.apps.AppConfig',
+    'potlako_visit_schedule',
     'potlako.apps.EdcIdentifierAppConfig',
     'potlako_dashboard.apps.AppConfig',
+    'potlako_prn.apps.AppConfig',
     'potlako_subject.apps.AppConfig',
+    'potlako.apps.EdcAppointmentAppConfig',
+    'potlako.apps.EdcBaseAppConfig',
+    'potlako.apps.EdcDeviceAppConfig',
+    'potlako.apps.EdcProtocolAppConfig',
+    'potlako.apps.EdcVisitTrackingAppConfig',
+    'potlako.apps.EdcFacilityAppConfig',
     'potlako.apps.AppConfig'
 ]
 
@@ -127,16 +131,16 @@ WSGI_APPLICATION = 'potlako.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        },
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'OPTIONS': {
-#             'read_default_file': os.path.join(ETC_DIR, APP_NAME, 'mysql.conf'),
+#         'default': {
+#             'ENGINE': 'django.db.backends.sqlite3',
+#             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 #         },
-#     },
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'OPTIONS': {
+            'read_default_file': os.path.join(ETC_DIR, APP_NAME, 'mysql.conf'),
+        },
+    },
 
 }
 
@@ -167,7 +171,7 @@ LANGUAGES = (
     ('tn', 'Setswana'),
     ('en', 'English'))
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Africa/Gaborone'
 
 USE_I18N = True
 
@@ -206,4 +210,7 @@ DASHBOARD_BASE_TEMPLATES = {
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 GIT_DIR = BASE_DIR
 
+# edc_facility
+HOLIDAY_FILE = os.path.join(BASE_DIR, 'holidays.csv')
+COUNTRY = 'botswana'
 COUNTRY = 'botswana'

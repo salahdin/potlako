@@ -31,6 +31,7 @@ from edc_registration.admin_site import edc_registration_admin
 from edc_visit_schedule.admin_site import edc_visit_schedule_admin
 
 from potlako_subject.admin_site import potlako_subject_admin
+from potlako_prn.admin_site import potlako_prn_admin
 from .views import HomeView, AdministrationView
 
 
@@ -40,6 +41,7 @@ urlpatterns = [
 
     path('admin/', admin.site.urls),
     path('admin/', potlako_subject_admin.urls),
+    path('admin/', potlako_prn_admin.urls),
     path('admin/', edc_appointment_admin.urls),
     path('admin/', edc_lab_admin.urls),
     path('admin/', edc_locator_admin.urls),
@@ -71,9 +73,10 @@ urlpatterns = [
 
     #     path('edc_sync/', include('edc_sync.urls')),
     #     path('edc_sync_files/', include('edc_sync_files.urls')),
-    
+
     path('edc_visit_schedule/', include('edc_visit_schedule.urls')),
     path('potlako_subject/', include('potlako_subject.urls')),
+    path('potlako_prn/', include('potlako_prn.urls')),
     path('subject/', include('potlako_dashboard.urls')),
 
     path('switch_sites/', LogoutView.as_view(next_page=settings.INDEX_PAGE),
