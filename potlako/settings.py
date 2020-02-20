@@ -63,6 +63,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django_crypto_fields.apps.AppConfig',
     'django_extensions',
+    'import_export',
     'simple_history',
     'corsheaders',
     'django_js_reverse',
