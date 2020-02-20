@@ -212,4 +212,6 @@ GIT_DIR = BASE_DIR
 # edc_facility
 HOLIDAY_FILE = os.path.join(BASE_DIR, 'holidays.csv')
 COUNTRY = 'botswana'
-COUNTRY = 'botswana'
+
+PARENT_REFERENCE_MODEL1 = ''
+PARENT_REFERENCE_MODEL2 = ''
