@@ -79,7 +79,7 @@ INSTALLED_APPS = [
     'edc_visit_schedule.apps.AppConfig',
     'edc_registration.apps.AppConfig',
     'edc_timepoint.apps.AppConfig',
-    'potlako_visit_schedule',
+    'potlako_visit_schedule.apps.AppConfig',
     'potlako.apps.EdcIdentifierAppConfig',
     'potlako_dashboard.apps.AppConfig',
     'potlako_prn.apps.AppConfig',
