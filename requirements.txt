@@ -39,6 +39,5 @@ git+https://github.com/potlako-plus/potlako-prn.git@develop#egg=potlako_prn
 git+https://github.com/potlako-plus/potlako-reference.git@develop#egg=potlako_reference
 git+https://github.com/potlako-plus/potlako-metadata-rules.git@develop#egg=potlako_metadata_rules
 git+https://github.com/botswana-harvard/edc-reports@develop#egg=edc_reports
-git+https://github.com/botswana-harvard/edc-list-data.git@develop#egg=edc_list_data
 django-cors-headers
 djangorestframework
