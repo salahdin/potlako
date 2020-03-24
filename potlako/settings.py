@@ -14,6 +14,7 @@ import os
 import sys
 
 import configparser
+from django.conf.locale.en import formats as en_formats
 from django.core.management.color import color_style
 
 # from .logging import LOGGING
@@ -97,7 +98,7 @@ INSTALLED_APPS = [
     'potlako.apps.EdcVisitTrackingAppConfig',
     'potlako.apps.AppConfig',
     'potlako.apps.EdcFacilityAppConfig',
-    'potlako.apps.EdcIdentifierAppConfig',   
+    'potlako.apps.EdcIdentifierAppConfig',
 ]
 
 MIDDLEWARE = [
@@ -175,7 +176,14 @@ LANGUAGE_CODE = 'en-us'
 
 LANGUAGES = (
     ('tn', 'Setswana'),
-    ('en', 'English'))
+    ('en', 'English'),
+    ('kck', 'Ikalanga'),
+)
+
+en_formats.DATETIME_FORMAT = "d-m-Y H:i:s"
+en_formats.DATE_FORMAT = "d-m-Y"
+
+DATE_INPUT_FORMATS = ['%d-%m-%Y']
 
 TIME_ZONE = 'Africa/Gaborone'
 
