@@ -1,4 +1,5 @@
 from datetime import datetime
+
 from dateutil.relativedelta import MO, TU, WE, TH, FR, SA, SU
 from dateutil.tz import gettz
 from django.apps import AppConfig as DjangoAppConfig
@@ -6,13 +7,12 @@ from django.core.management.color import color_style
 from edc_appointment.appointment_config import AppointmentConfig
 from edc_appointment.apps import AppConfig as BaseEdcAppointmentAppConfig
 from edc_base.apps import AppConfig as BaseEdcBaseAppConfig
-from edc_metadata.apps import AppConfig as BaseEdcMetadataAppConfig
-from edc_identifier.apps import AppConfig as BaseEdcIdentifierAppConfig
 from edc_facility.apps import AppConfig as BaseEdcFacilityAppConfig
+from edc_identifier.apps import AppConfig as BaseEdcIdentifierAppConfig
+from edc_metadata.apps import AppConfig as BaseEdcMetadataAppConfig
 from edc_protocol.apps import AppConfig as BaseEdcProtocolAppConfig
 from edc_visit_tracking.apps import AppConfig as BaseEdcVisitTrackingAppConfig
 from edc_visit_tracking.constants import SCHEDULED, UNSCHEDULED, LOST_VISIT
-
 
 style = color_style()
 
@@ -26,7 +26,7 @@ class EdcAppointmentAppConfig(BaseEdcAppointmentAppConfig):
         AppointmentConfig(
             model='edc_appointment.appointment',
             related_visit_model='potlako_subject.subjectvisit',
-            appt_type='hospital')]
+            appt_type='clinic')]
 
 
 class EdcProtocolAppConfig(BaseEdcProtocolAppConfig):
@@ -45,7 +45,6 @@ class EdcBaseAppConfig(BaseEdcBaseAppConfig):
     institution = 'Botswana-Harvard AIDS Institute'
 
 
-
 class EdcIdentifierAppConfig(BaseEdcIdentifierAppConfig):
     identifier_prefix = '132'
 
@@ -53,7 +52,6 @@ class EdcIdentifierAppConfig(BaseEdcIdentifierAppConfig):
 class EdcVisitTrackingAppConfig(BaseEdcVisitTrackingAppConfig):
     visit_models = {
         'potlako_subject': ('subject_visit', 'potlako_subject.subjectvisit')}
-    
 
 
 class EdcFacilityAppConfig(BaseEdcFacilityAppConfig):
