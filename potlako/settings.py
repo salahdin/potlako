@@ -177,16 +177,13 @@ LANGUAGES = (
     ('kck', 'Ikalanga'),
 )
 
-en_formats.DATETIME_FORMAT = "d-m-Y H:i:s"
-en_formats.DATE_FORMAT = "d-m-Y"
-
 DATE_INPUT_FORMATS = ['%d-%m-%Y']
 
 TIME_ZONE = 'Africa/Gaborone'
 
 USE_I18N = True
 
-USE_L10N = True
+USE_L10N = False
 
 USE_TZ = True
 

@@ -39,6 +39,5 @@ git+https://github.com/potlako-plus/potlako-validations.git@develop#egg=potlako_
 git+https://github.com/potlako-plus/potlako-visit-schedule.git@develop#egg=potlako_visit_schedule
 git+https://github.com/potlako-plus/potlako-prn.git@develop#egg=potlako_prn
 git+https://github.com/potlako-plus/potlako-reference.git@develop#egg=potlako_reference
-
 django-cors-headers
 djangorestframework
