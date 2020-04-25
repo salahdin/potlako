@@ -67,9 +67,10 @@ class EdcMetadataAppConfig(BaseEdcMetadataAppConfig):
 
     reason_field = {'potlako_subject.subjectvisit': 'reason'}
     other_visit_reasons = [
-        'off study', 'deferred', 'Lost to follow-up', 'Death',
-        'Missed quarterly visit']
+        'off study', 'deferred', 'lost_to_follow_up', 'Death',
+        'missed_quarterly_visit']
     other_create_visit_reasons = [
-        'Quarterly visit/contact', 'Unscheduled visit/contact']
+        'initial_visit/contact', 'quarterly_visit/contact',
+        'unscheduled_visit/contact']
     create_on_reasons = [SCHEDULED, UNSCHEDULED] + other_create_visit_reasons
     delete_on_reasons = [LOST_VISIT] + other_visit_reasons
