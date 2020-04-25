@@ -14,7 +14,6 @@ import os
 import sys
 
 import configparser
-from django.conf.locale.en import formats as en_formats
 from django.core.management.color import color_style
 
 # from .logging import LOGGING
@@ -85,6 +84,7 @@ INSTALLED_APPS = [
     'edc_registration.apps.AppConfig',
     'edc_visit_schedule.apps.AppConfig',
     'edc_timepoint.apps.AppConfig',
+    'edc_data_manager.apps.AppConfig',
     'potlako_dashboard.apps.AppConfig',
     'potlako_metadata_rules.apps.AppConfig',
     'potlako_reference.apps.AppConfig',
@@ -137,14 +137,17 @@ WSGI_APPLICATION = 'potlako.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
+
 DATABASES = {
 
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'OPTIONS': {
-            'read_default_file': os.path.join(ETC_DIR, APP_NAME, 'mysql.conf'),
-        },
-    },
+        'ENGINE': 'django.db.backends.mysql', 
+        'NAME': '',
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
+        'PORT': '3306',
+    }
 
 }
 
@@ -202,6 +205,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'potlako', 'static')
 DASHBOARD_URL_NAMES = {
     'subject_listboard_url': 'potlako_dashboard:subject_listboard_url',
     'screening_listboard_url': 'potlako_dashboard:screening_listboard_url',
+    'data_manager_listboard_url': 'edc_data_manager:data_manager_listboard_url',
     'subject_dashboard_url': 'potlako_dashboard:subject_dashboard_url',
 }
 
@@ -210,6 +214,7 @@ LAB_DASHBOARD_URL_NAMES = {}
 DASHBOARD_BASE_TEMPLATES = {
     'listboard_base_template': 'potlako/base.html',
     'dashboard_base_template': 'potlako/base.html',
+    'data_manager_listboard_template': 'edc_data_manager/listboard.html',
     'screening_listboard_template': 'potlako_dashboard/screening/listboard.html',
     'subject_listboard_template': 'potlako_dashboard/subject/listboard.html',
     'subject_dashboard_template': 'potlako_dashboard/subject/dashboard.html',
@@ -217,6 +222,13 @@ DASHBOARD_BASE_TEMPLATES = {
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 GIT_DIR = BASE_DIR
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = ''
+EMAIL_USE_TLS = True
+EMAIL_PORT = 0
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
 
 # edc_facility
 HOLIDAY_FILE = os.path.join(BASE_DIR, 'holidays.csv')

@@ -22,6 +22,7 @@ from django.views.generic.base import RedirectView
 
 from edc_action_item.admin_site import edc_action_item_admin
 from edc_appointment.admin_site import edc_appointment_admin
+from edc_data_manager.admin_site import edc_data_manager_admin
 from edc_identifier.admin_site import edc_identifier_admin
 from edc_lab.admin_site import edc_lab_admin
 from edc_locator.admin_site import edc_locator_admin
@@ -50,6 +51,7 @@ urlpatterns = [
     path('admin/', edc_registration_admin.urls),
     path('admin/', edc_reference_admin.urls),
     path('admin/', edc_action_item_admin.urls),
+    path('admin/', edc_data_manager_admin.urls),
     path('admin/edc_visit_schedule/', edc_visit_schedule_admin.urls),
 
     path('administration/', AdministrationView.as_view(),
@@ -62,6 +64,7 @@ urlpatterns = [
     path('edc_action_item/', include('edc_action_item.urls')),
     path('edc_base/', include('edc_base.urls')),
     path('edc_consent/', include('edc_consent.urls')),
+    path('edc_data_manager/', include('edc_data_manager.urls')),
     path('edc_device/', include('edc_device.urls')),
     path('edc_locator/', include('edc_locator.urls')),
     path('edc_label/', include('edc_label.urls')),
