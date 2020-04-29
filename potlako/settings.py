@@ -14,6 +14,7 @@ import os
 import sys
 
 import configparser
+from django.conf.locale.en import formats as en_formats
 from django.core.management.color import color_style
 
 # from .logging import LOGGING
@@ -84,13 +85,13 @@ INSTALLED_APPS = [
     'edc_registration.apps.AppConfig',
     'edc_visit_schedule.apps.AppConfig',
     'edc_timepoint.apps.AppConfig',
-    'edc_data_manager.apps.AppConfig',
     'potlako_dashboard.apps.AppConfig',
     'potlako_metadata_rules.apps.AppConfig',
     'potlako_reference.apps.AppConfig',
     'potlako_visit_schedule.apps.AppConfig',
     'potlako_prn.apps.AppConfig',
     'potlako_subject.apps.AppConfig',
+    'potlako.apps.EdcDataManagerAppConfig',
     'potlako.apps.EdcAppointmentAppConfig',
     'potlako.apps.EdcMetadataAppConfig',
     'potlako.apps.EdcBaseAppConfig',
@@ -223,10 +224,10 @@ DASHBOARD_BASE_TEMPLATES = {
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 GIT_DIR = BASE_DIR
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = ''
 EMAIL_HOST = ''
-EMAIL_USE_TLS = True
-EMAIL_PORT = 0
+EMAIL_USE_TLS = 
+EMAIL_PORT = 
 EMAIL_HOST_USER = ''
 EMAIL_HOST_PASSWORD = ''
 
