@@ -220,9 +220,9 @@ DASHBOARD_BASE_TEMPLATES = {
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 GIT_DIR = BASE_DIR
 
-EMAIL_BACKEND = ''
+EMAIL_BACKEND = config['email_conf'].get('email_backend')
 EMAIL_HOST = config['email_conf'].get('email_host')
-EMAIL_USE_TLS = ''
+EMAIL_USE_TLS = config['email_conf'].get('email_use_tls')
 EMAIL_PORT = config['email_conf'].get('email_port')
 EMAIL_HOST_USER = config['email_conf'].get('email_user')
 EMAIL_HOST_PASSWORD = config['email_conf'].get('email_host_pwd')
