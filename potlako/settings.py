@@ -177,7 +177,7 @@ LANGUAGES = (
     ('kck', 'Ikalanga'),
 )
 
-DATE_INPUT_FORMATS = ['%d-%m-%Y']
+DATE_INPUT_FORMATS = ['%d-%b-%Y']
 
 TIME_ZONE = 'Africa/Gaborone'
 
