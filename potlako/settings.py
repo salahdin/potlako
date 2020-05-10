@@ -14,7 +14,6 @@ import os
 import sys
 
 import configparser
-from django.conf.locale.en import formats as en_formats
 from django.core.management.color import color_style
 
 # from .logging import LOGGING
@@ -44,13 +43,23 @@ DEBUG = True
 ALLOWED_HOSTS = ['localhost', 'potlako-plus.bhp.org.bw',
                  'potlako-plus-dev.bhp.org.bw', '127.0.0.1']
 
-CONFIG_FILE = f'{APP_NAME}.conf'
+CONFIG_FILE = f'{APP_NAME}.ini'
 
 CONFIG_PATH = os.path.join(ETC_DIR, APP_NAME, CONFIG_FILE)
 sys.stdout.write(style.SUCCESS(f'  * Reading config from {CONFIG_FILE}\n'))
+config = configparser.ConfigParser()
+config.read(CONFIG_PATH)
 
-config = configparser.RawConfigParser()
-config.read(os.path.join(CONFIG_PATH))
+# EDC SMS configuration
+BASE_API_URL = config['edc_sms']['base_api_url']
+
+# email configurations
+EMAIL_BACKEND = config['email_conf'].get('email_backend')
+EMAIL_HOST = config['email_conf'].get('email_host')
+EMAIL_USE_TLS = config['email_conf'].get('email_use_tls')
+EMAIL_PORT = config['email_conf'].get('email_port')
+EMAIL_HOST_USER = config['email_conf'].get('email_user')
+EMAIL_HOST_PASSWORD = config['email_conf'].get('email_host_pwd')
 
 # Application definition
 
@@ -85,6 +94,8 @@ INSTALLED_APPS = [
     'edc_registration.apps.AppConfig',
     'edc_visit_schedule.apps.AppConfig',
     'edc_timepoint.apps.AppConfig',
+    'django_apscheduler',
+    'edc_sms.apps.AppConfig',
     'potlako_dashboard.apps.AppConfig',
     'potlako_metadata_rules.apps.AppConfig',
     'potlako_reference.apps.AppConfig',
@@ -138,14 +149,24 @@ WSGI_APPLICATION = 'potlako.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
+mysql_config = configparser.ConfigParser()
+mysql_config.read(os.path.join(ETC_DIR, APP_NAME, 'mysql.ini'))
+
+HOST = mysql_config['mysql']['host']
+DB_USER = mysql_config['mysql']['user']
+DB_PASSWORD = mysql_config['mysql']['password']
+DB_NAME = mysql_config['mysql']['database']
+PORT = mysql_config['mysql']['port']
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'OPTIONS': {
-            'read_default_file': os.path.join(ETC_DIR, APP_NAME, 'mysql.conf'),
-        },
-    },
+        'NAME': DB_NAME,
+        'USER': DB_USER,
+        'PASSWORD': DB_PASSWORD,
+        'HOST': HOST,   # Or an IP Address that your DB is hosted on
+        'PORT': PORT,
+    }
 }
 
 # Password validation
@@ -203,6 +224,7 @@ DASHBOARD_URL_NAMES = {
     'subject_listboard_url': 'potlako_dashboard:subject_listboard_url',
     'screening_listboard_url': 'potlako_dashboard:screening_listboard_url',
     'data_manager_listboard_url': 'edc_data_manager:data_manager_listboard_url',
+    'contact_listboard_url': 'edc_sms:contact_listboard_url',
     'subject_dashboard_url': 'potlako_dashboard:subject_dashboard_url',
 }
 
@@ -210,6 +232,7 @@ LAB_DASHBOARD_URL_NAMES = {}
 
 DASHBOARD_BASE_TEMPLATES = {
     'listboard_base_template': 'potlako/base.html',
+    'contact_listboard_template': 'edc_sms/listboard.html',
     'dashboard_base_template': 'potlako/base.html',
     'data_manager_listboard_template': 'edc_data_manager/listboard.html',
     'screening_listboard_template': 'potlako_dashboard/screening/listboard.html',
@@ -220,12 +243,6 @@ DASHBOARD_BASE_TEMPLATES = {
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 GIT_DIR = BASE_DIR
 
-EMAIL_BACKEND = config['email_conf'].get('email_backend')
-EMAIL_HOST = config['email_conf'].get('email_host')
-EMAIL_USE_TLS = config['email_conf'].get('email_use_tls')
-EMAIL_PORT = config['email_conf'].get('email_port')
-EMAIL_HOST_USER = config['email_conf'].get('email_user')
-EMAIL_HOST_PASSWORD = config['email_conf'].get('email_host_pwd')
 
 # edc_facility
 HOLIDAY_FILE = os.path.join(BASE_DIR, 'holidays.csv')

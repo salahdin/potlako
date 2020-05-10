@@ -29,6 +29,7 @@ from edc_locator.admin_site import edc_locator_admin
 from edc_metadata.admin_site import edc_metadata_admin
 from edc_reference.admin_site import edc_reference_admin
 from edc_registration.admin_site import edc_registration_admin
+from edc_sms.admin_site import edc_sms_admin
 from edc_visit_schedule.admin_site import edc_visit_schedule_admin
 
 from potlako_subject.admin_site import potlako_subject_admin
@@ -52,6 +53,7 @@ urlpatterns = [
     path('admin/', edc_reference_admin.urls),
     path('admin/', edc_action_item_admin.urls),
     path('admin/', edc_data_manager_admin.urls),
+    path('admin/', edc_sms_admin.urls),
     path('admin/edc_visit_schedule/', edc_visit_schedule_admin.urls),
 
     path('administration/', AdministrationView.as_view(),
@@ -74,6 +76,7 @@ urlpatterns = [
     path('edc_reference/', include('edc_reference.urls')),
     path('edc_registration/', include('edc_registration.urls')),
     path('edc_subject_dashboard/', include('edc_subject_dashboard.urls')),
+    path('edc_sms/', include('edc_sms.urls')),
 
     #     path('edc_sync/', include('edc_sync.urls')),
     #     path('edc_sync_files/', include('edc_sync_files.urls')),
