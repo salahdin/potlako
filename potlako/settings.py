@@ -95,7 +95,6 @@ INSTALLED_APPS = [
     'edc_visit_schedule.apps.AppConfig',
     'edc_timepoint.apps.AppConfig',
     'django_apscheduler',
-    'edc_sms.apps.AppConfig',
     'potlako_dashboard.apps.AppConfig',
     'potlako_metadata_rules.apps.AppConfig',
     'potlako_reference.apps.AppConfig',
@@ -111,6 +110,7 @@ INSTALLED_APPS = [
     'potlako.apps.AppConfig',
     'potlako.apps.EdcFacilityAppConfig',
     'potlako.apps.EdcIdentifierAppConfig',
+    'potlako.apps.EdcSmsAppConfig',
 ]
 
 MIDDLEWARE = [

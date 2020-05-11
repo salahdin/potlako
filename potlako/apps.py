@@ -15,6 +15,7 @@ from edc_metadata.apps import AppConfig as BaseEdcMetadataAppConfig
 from edc_protocol.apps import AppConfig as BaseEdcProtocolAppConfig
 from edc_visit_tracking.apps import AppConfig as BaseEdcVisitTrackingAppConfig
 from edc_visit_tracking.constants import SCHEDULED, UNSCHEDULED, LOST_VISIT
+from edc_sms.apps import AppConfig as BaseEdcSmsAppConfig
 
 from potlako_dashboard.patterns import subject_identifier
 
@@ -82,3 +83,8 @@ class EdcMetadataAppConfig(BaseEdcMetadataAppConfig):
 
 class EdcDataManagerAppConfig(BaseEdcDataManagerAppConfig):
     identifier_pattern = subject_identifier
+
+
+class EdcSmsAppConfig(BaseEdcSmsAppConfig):
+    locator_model = 'potlako_subject.subjectlocator'
+    consent_model = 'potlako_subject.subjectconsent'
