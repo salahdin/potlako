@@ -200,6 +200,8 @@ LANGUAGES = (
 
 DATE_INPUT_FORMATS = ['%d-%b-%Y']
 
+CELLPHONE_REGEX = '^[7]{1}[12345678]{1}[0-9]{6}$'
+
 TIME_ZONE = 'Africa/Gaborone'
 
 USE_I18N = True
