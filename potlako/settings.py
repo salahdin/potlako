@@ -31,6 +31,7 @@ LOGIN_REDIRECT_URL = 'home_url'
 
 INDEX_PAGE = 'potlako-plus.bhp.org.bw:8000'
 
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
@@ -168,6 +169,14 @@ DATABASES = {
     }
 }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
+
+
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 
@@ -199,7 +208,10 @@ LANGUAGES = (
 
 DATE_INPUT_FORMATS = ['%d-%m-%Y']
 
-CELLPHONE_REGEX = '^[7]{1}[12345678]{1}[0-9]{6}$|^[2-8]{1}[0-9]{6}$'
+# CELLPHONE_REGEX = '^[7]{1}[12345678]{1}[0-9]{6}$|^[2-8]{1}[0-9]{6}$'
+
+CELLPHONE_REGEX = '^[7]{1}[12345678]{1}[0-9]{6}$'
+TELEPHONE_REGEX = '^[2-8]{1}[0-9]{6}$'
 
 TIME_ZONE = 'Africa/Gaborone'
 
