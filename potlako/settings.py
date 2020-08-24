@@ -77,6 +77,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'django_js_reverse',
     'rest_framework',
+    'django_q',
     'rest_framework.authtoken',
     'edc_action_item.apps.AppConfig',
     'edc_consent.apps.AppConfig',
@@ -208,6 +209,14 @@ USE_I18N = True
 USE_L10N = False
 
 USE_TZ = True
+
+# Django q configurations
+
+Q_CLUSTER = {
+    'name': 'edc_sms',
+    'retry': 60,
+    'orm': 'default',
+}
 
 SITE_CODE = '40'
 DEFAULT_STUDY_SITE = '40'
