@@ -124,7 +124,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'edc_dashboard.middleware.DashboardMiddleware',
     'edc_subject_dashboard.middleware.DashboardMiddleware',
-    'edc_lab_dashboard.middleware.DashboardMiddleware'
+#     'edc_lab_dashboard.middleware.DashboardMiddleware'
 ]
 
 ROOT_URLCONF = 'potlako.urls'
@@ -234,6 +234,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'potlako', 'static')
 DASHBOARD_URL_NAMES = {
     'subject_listboard_url': 'potlako_dashboard:subject_listboard_url',
     'screening_listboard_url': 'potlako_dashboard:screening_listboard_url',
+    'endpoint_listboard_url': 'potlako_dashboard:endpoint_listboard_url',
     'data_manager_listboard_url': 'edc_data_manager:data_manager_listboard_url',
     'contact_listboard_url': 'edc_sms:contact_listboard_url',
     'subject_dashboard_url': 'potlako_dashboard:subject_dashboard_url',
@@ -247,6 +248,7 @@ DASHBOARD_BASE_TEMPLATES = {
     'dashboard_base_template': 'potlako/base.html',
     'data_manager_listboard_template': 'edc_data_manager/listboard.html',
     'screening_listboard_template': 'potlako_dashboard/screening/listboard.html',
+    'endpoint_listboard_template': 'potlako_dashboard/endpoint/listboard.html',
     'subject_listboard_template': 'potlako_dashboard/subject/listboard.html',
     'subject_dashboard_template': 'potlako_dashboard/subject/dashboard.html',
 }

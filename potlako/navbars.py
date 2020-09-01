@@ -13,6 +13,13 @@ potlako.append_item(
 
 potlako.append_item(
     NavbarItem(
+        name='endpoint_recordings',
+        label='Endpoint Recordings',
+        fa_icon='fa-user-plus',
+        url_name=settings.DASHBOARD_URL_NAMES.get('endpoint_listboard_url')))
+
+potlako.append_item(
+    NavbarItem(
         name='potlako_subject',
         label='Subjects',
         fa_icon='far fa-user-circle',
