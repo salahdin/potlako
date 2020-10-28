@@ -239,6 +239,7 @@ DASHBOARD_URL_NAMES = {
     'data_manager_listboard_url': 'edc_data_manager:data_manager_listboard_url',
     'contact_listboard_url': 'edc_sms:contact_listboard_url',
     'subject_dashboard_url': 'potlako_dashboard:subject_dashboard_url',
+    'verbal_consent_url': 'potlako_dashboard:verbal_consent_url'
 }
 
 LAB_DASHBOARD_URL_NAMES = {}
