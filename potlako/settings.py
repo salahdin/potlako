@@ -31,6 +31,7 @@ LOGIN_REDIRECT_URL = 'home_url'
 
 INDEX_PAGE = 'potlako-plus.bhp.org.bw:8000'
 
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
@@ -77,6 +78,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'django_js_reverse',
     'rest_framework',
+    'django_q',
     'rest_framework.authtoken',
     'edc_action_item.apps.AppConfig',
     'edc_consent.apps.AppConfig',
@@ -123,7 +125,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'edc_dashboard.middleware.DashboardMiddleware',
     'edc_subject_dashboard.middleware.DashboardMiddleware',
-    'edc_lab_dashboard.middleware.DashboardMiddleware'
+#     'edc_lab_dashboard.middleware.DashboardMiddleware'
 ]
 
 ROOT_URLCONF = 'potlako.urls'
@@ -210,6 +212,14 @@ USE_L10N = False
 
 USE_TZ = True
 
+# Django q configurations
+
+Q_CLUSTER = {
+    'name': 'edc_sms',
+    'retry': 60,
+    'orm': 'default',
+}
+
 SITE_CODE = '40'
 DEFAULT_STUDY_SITE = '40'
 REVIEWER_SITE_ID = 41
@@ -225,9 +235,11 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'potlako', 'static')
 DASHBOARD_URL_NAMES = {
     'subject_listboard_url': 'potlako_dashboard:subject_listboard_url',
     'screening_listboard_url': 'potlako_dashboard:screening_listboard_url',
+    'endpoint_listboard_url': 'potlako_dashboard:endpoint_listboard_url',
     'data_manager_listboard_url': 'edc_data_manager:data_manager_listboard_url',
     'contact_listboard_url': 'edc_sms:contact_listboard_url',
     'subject_dashboard_url': 'potlako_dashboard:subject_dashboard_url',
+    'verbal_consent_url': 'potlako_dashboard:verbal_consent_url'
 }
 
 LAB_DASHBOARD_URL_NAMES = {}
@@ -238,6 +250,7 @@ DASHBOARD_BASE_TEMPLATES = {
     'dashboard_base_template': 'potlako/base.html',
     'data_manager_listboard_template': 'edc_data_manager/listboard.html',
     'screening_listboard_template': 'potlako_dashboard/screening/listboard.html',
+    'endpoint_listboard_template': 'potlako_dashboard/endpoint/listboard.html',
     'subject_listboard_template': 'potlako_dashboard/subject/listboard.html',
     'subject_dashboard_template': 'potlako_dashboard/subject/dashboard.html',
 }

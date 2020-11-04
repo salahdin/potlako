@@ -43,3 +43,4 @@ git+https://github.com/potlako-plus/potlako-prn.git@develop#egg=potlako_prn
 -e /Users/ckgathi/source/potlako-reference
 django-cors-headers
 djangorestframework
+mysqlclient

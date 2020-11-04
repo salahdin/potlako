@@ -18,4 +18,11 @@ potlako.append_item(
         fa_icon='far fa-user-circle',
         url_name=settings.DASHBOARD_URL_NAMES.get('subject_listboard_url')))
 
+potlako.append_item(
+    NavbarItem(
+        name='endpoint_recordings',
+        label='Endpoint Recordings',
+        fa_icon='fa-user-plus',
+        url_name=settings.DASHBOARD_URL_NAMES.get('endpoint_listboard_url')))
+
 site_navbars.register(potlako)
