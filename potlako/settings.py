@@ -94,6 +94,7 @@ INSTALLED_APPS = [
     'edc_subject_dashboard.apps.AppConfig',
     'edc_label.apps.AppConfig',
     'edc_registration.apps.AppConfig',
+    'edc_sync_files.apps.AppConfig',
     'edc_visit_schedule.apps.AppConfig',
     'edc_timepoint.apps.AppConfig',
     'potlako_dashboard.apps.AppConfig',
@@ -109,6 +110,7 @@ INSTALLED_APPS = [
     'potlako.apps.EdcProtocolAppConfig',
     'potlako.apps.EdcVisitTrackingAppConfig',
     'potlako.apps.AppConfig',
+    'potlako.apps.EdcSyncAppConfig',
     'potlako.apps.EdcFacilityAppConfig',
     'potlako.apps.EdcIdentifierAppConfig',
     'potlako.apps.EdcSmsAppConfig',
@@ -264,3 +266,9 @@ COUNTRY = 'botswana'
 
 PARENT_REFERENCE_MODEL1 = ''
 PARENT_REFERENCE_MODEL2 = ''
+
+EDC_SYNC_SERVER_IP = config['edc_sync'].get('server_ip')
+EDC_SYNC_FILES_REMOTE_HOST = config['edc_sync_files'].get('remote_host')
+EDC_SYNC_FILES_USER = config['edc_sync_files'].get('sync_user')
+EDC_SYNC_FILES_USB_VOLUME = config['edc_sync_files'].get('usb_volume')
+
