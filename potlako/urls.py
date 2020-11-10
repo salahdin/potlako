@@ -30,6 +30,7 @@ from edc_metadata.admin_site import edc_metadata_admin
 from edc_reference.admin_site import edc_reference_admin
 from edc_registration.admin_site import edc_registration_admin
 from edc_sms.admin_site import edc_sms_admin
+from edc_sync.admin_site import edc_sync_admin
 from edc_sync_files.admin_site import edc_sync_files_admin
 from edc_visit_schedule.admin_site import edc_visit_schedule_admin
 
@@ -55,6 +56,7 @@ urlpatterns = [
     path('admin/', edc_action_item_admin.urls),
     path('admin/', edc_data_manager_admin.urls),
     path('admin/', edc_sms_admin.urls),
+    path('admin/', edc_sync_admin.urls),
     path('admin/', edc_sync_files_admin.urls),
     path('admin/edc_visit_schedule/', edc_visit_schedule_admin.urls),
 
