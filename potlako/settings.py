@@ -275,6 +275,8 @@ COUNTRY = 'botswana'
 PARENT_REFERENCE_MODEL1 = ''
 PARENT_REFERENCE_MODEL2 = ''
 
+COMMUNITIES = config['communities']
+
 DEVICE_ID = config['edc_device'].get('device_id', '99')
 DEVICE_ROLE = config['edc_device'].get('role')
 
