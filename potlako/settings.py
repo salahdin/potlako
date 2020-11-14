@@ -25,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 APP_NAME = 'potlako'
 SITE_ID = 40
 
-ETC_DIR = '/etc/'
+ETC_DIR = os.path.join('/etc/', APP_NAME)
 
 LOGIN_REDIRECT_URL = 'home_url'
 
@@ -45,7 +45,7 @@ ALLOWED_HOSTS = ['localhost', 'potlako-plus.bhp.org.bw', '127.0.0.1']
 
 CONFIG_FILE = f'{APP_NAME}.ini'
 
-CONFIG_PATH = os.path.join(ETC_DIR, APP_NAME, CONFIG_FILE)
+CONFIG_PATH = os.path.join(ETC_DIR, CONFIG_FILE)
 sys.stdout.write(style.SUCCESS(f'  * Reading config from {CONFIG_FILE}\n'))
 config = configparser.ConfigParser()
 config.read(CONFIG_PATH)
@@ -152,7 +152,7 @@ WSGI_APPLICATION = 'potlako.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 mysql_config = configparser.ConfigParser()
-mysql_config.read(os.path.join(ETC_DIR, APP_NAME, 'mysql.ini'))
+mysql_config.read(os.path.join(ETC_DIR, 'mysql.ini'))
 
 HOST = mysql_config['mysql']['host']
 DB_USER = mysql_config['mysql']['user']
