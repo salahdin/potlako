@@ -39,10 +39,9 @@ INDEX_PAGE = 'potlako-plus.bhp.org.bw:8000'
 SECRET_KEY = 'o(^0$9zu2w5eby-^x&dd441d(@*#(+($can2uomfq%o(@p-fm+'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['localhost', 'potlako-plus.bhp.org.bw',
-                 'potlako-plus-dev.bhp.org.bw', '127.0.0.1']
+ALLOWED_HOSTS = ['localhost', 'potlako-plus.bhp.org.bw', '127.0.0.1']
 
 CONFIG_FILE = f'{APP_NAME}.ini'
 
