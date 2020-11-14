@@ -48,3 +48,4 @@ git+https://github.com/potlako-plus/potlako-reference.git@develop#egg=potlako_re
 django-cors-headers
 djangorestframework
 Fabric3
+ipython
