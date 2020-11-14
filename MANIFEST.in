@@ -1,0 +1,3 @@
+include AUTHORS CHANGES README.md LICENCE
+recursive-include potlako/templates *
+recursive-include potlako/static *
