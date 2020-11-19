@@ -25,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 APP_NAME = 'potlako'
 SITE_ID = 40
 
-ETC_DIR = '/etc/'
+ETC_DIR = os.path.join('/etc/', APP_NAME)
 
 LOGIN_REDIRECT_URL = 'home_url'
 
@@ -38,15 +38,16 @@ INDEX_PAGE = 'potlako-plus.bhp.org.bw:8000'
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'o(^0$9zu2w5eby-^x&dd441d(@*#(+($can2uomfq%o(@p-fm+'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# KEY_PATH = os.path.join(ETC_DIR, 'crypto_fields')
 
-ALLOWED_HOSTS = ['localhost', 'potlako-plus.bhp.org.bw',
-                 'potlako-plus-dev.bhp.org.bw', '127.0.0.1']
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = False
+
+ALLOWED_HOSTS = ['localhost', 'potlako-plus.bhp.org.bw', '127.0.0.1']
 
 CONFIG_FILE = f'{APP_NAME}.ini'
 
-CONFIG_PATH = os.path.join(ETC_DIR, APP_NAME, CONFIG_FILE)
+CONFIG_PATH = os.path.join(ETC_DIR, CONFIG_FILE)
 sys.stdout.write(style.SUCCESS(f'  * Reading config from {CONFIG_FILE}\n'))
 config = configparser.ConfigParser()
 config.read(CONFIG_PATH)
@@ -94,6 +95,7 @@ INSTALLED_APPS = [
     'edc_subject_dashboard.apps.AppConfig',
     'edc_label.apps.AppConfig',
     'edc_registration.apps.AppConfig',
+    'edc_sync_files.apps.AppConfig',
     'edc_visit_schedule.apps.AppConfig',
     'edc_timepoint.apps.AppConfig',
     'potlako_dashboard.apps.AppConfig',
@@ -109,6 +111,7 @@ INSTALLED_APPS = [
     'potlako.apps.EdcProtocolAppConfig',
     'potlako.apps.EdcVisitTrackingAppConfig',
     'potlako.apps.AppConfig',
+    'potlako.apps.EdcSyncAppConfig',
     'potlako.apps.EdcFacilityAppConfig',
     'potlako.apps.EdcIdentifierAppConfig',
     'potlako.apps.EdcSmsAppConfig',
@@ -151,7 +154,7 @@ WSGI_APPLICATION = 'potlako.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 mysql_config = configparser.ConfigParser()
-mysql_config.read(os.path.join(ETC_DIR, APP_NAME, 'mysql.ini'))
+mysql_config.read(os.path.join(ETC_DIR, 'mysql.ini'))
 
 HOST = mysql_config['mysql']['host']
 DB_USER = mysql_config['mysql']['user']
@@ -187,6 +190,14 @@ AUTH_PASSWORD_VALIDATORS = [
      'django.contrib.auth.password_validation.NumericPasswordValidator',
      },
 ]
+
+REST_FRAMEWORK = {
+    'PAGE_SIZE': 1,
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
@@ -264,3 +275,14 @@ COUNTRY = 'botswana'
 
 PARENT_REFERENCE_MODEL1 = ''
 PARENT_REFERENCE_MODEL2 = ''
+
+COMMUNITIES = config['communities']
+
+DEVICE_ID = config['edc_device'].get('device_id', '99')
+DEVICE_ROLE = config['edc_device'].get('role')
+
+EDC_SYNC_SERVER_IP = config['edc_sync'].get('server_ip')
+EDC_SYNC_FILES_REMOTE_HOST = config['edc_sync_files'].get('remote_host')
+EDC_SYNC_FILES_USER = config['edc_sync_files'].get('sync_user')
+EDC_SYNC_FILES_USB_VOLUME = config['edc_sync_files'].get('usb_volume')
+

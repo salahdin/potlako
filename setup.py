@@ -12,14 +12,14 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name='potlako',
-    version='0.0',
+    version='0.1.5',
     author=u'Software Engineering & Data Management',
     author_email='se-dmc@bhp.org.bw',
     packages=find_packages(),
     include_package_data=True,
-    url='https://github.com/potlako-plus/potlako-subject',
+    url='https://github.com/potlako-plus/potlako',
     license='GPL license, see LICENSE',
-    description='Potlako Plus Subject',
+    description='Potlako Plus',
     long_description=README,
     zip_safe=False,
     keywords='django potlako plus',

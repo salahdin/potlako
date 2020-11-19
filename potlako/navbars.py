@@ -25,4 +25,10 @@ potlako.append_item(
         fa_icon='fa-user-plus',
         url_name=settings.DASHBOARD_URL_NAMES.get('endpoint_listboard_url')))
 
+potlako.append_item(
+    NavbarItem(name='synchronization',
+               label='Data Synchronization',
+               fa_icon='fa-exchange',
+               url_name='edc_sync:home_url'))
+
 site_navbars.register(potlako)

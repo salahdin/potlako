@@ -3,16 +3,19 @@ from datetime import datetime
 from dateutil.relativedelta import MO, TU, WE, TH, FR, SA, SU
 from dateutil.tz import gettz
 from django.apps import AppConfig as DjangoAppConfig
+from django.conf import settings
 from django.core.management.color import color_style
 from edc_appointment.appointment_config import AppointmentConfig
 from edc_appointment.apps import AppConfig as BaseEdcAppointmentAppConfig
 from edc_base.apps import AppConfig as BaseEdcBaseAppConfig
 from edc_data_manager.apps import AppConfig as BaseEdcDataManagerAppConfig
+from edc_device.apps import AppConfig as BaseEdcDeviceAppConfig
 from edc_facility.apps import AppConfig as BaseEdcFacilityAppConfig
 from edc_identifier.apps import AppConfig as BaseEdcIdentifierAppConfig
 from edc_metadata.apps import AppConfig as BaseEdcMetadataAppConfig
 from edc_protocol.apps import AppConfig as BaseEdcProtocolAppConfig
 from edc_sms.apps import AppConfig as BaseEdcSmsAppConfig
+from edc_sync.apps import AppConfig as BaseEdcSyncAppConfig
 from edc_visit_tracking.apps import AppConfig as BaseEdcVisitTrackingAppConfig
 from edc_visit_tracking.constants import SCHEDULED, UNSCHEDULED, LOST_VISIT
 from potlako_dashboard.patterns import subject_identifier
@@ -78,6 +81,12 @@ class EdcMetadataAppConfig(BaseEdcMetadataAppConfig):
     delete_on_reasons = [LOST_VISIT] + other_visit_reasons
 
 
+class EdcDeviceAppConfig(BaseEdcDeviceAppConfig):
+    use_settings = True
+    device_id = settings.DEVICE_ID
+    device_role = settings.DEVICE_ROLE
+    
+
 class EdcDataManagerAppConfig(BaseEdcDataManagerAppConfig):
     identifier_pattern = subject_identifier
 
@@ -86,3 +95,6 @@ class EdcSmsAppConfig(BaseEdcSmsAppConfig):
     locator_model = 'potlako_subject.subjectlocator'
     consent_model = 'potlako_subject.subjectconsent'
     sms_model = 'potlako_subject.sms'
+    
+class EdcSyncAppConfig(BaseEdcSyncAppConfig):
+    base_template_name = 'potlako/base.html'
