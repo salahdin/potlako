@@ -92,7 +92,7 @@ class EdcDeviceAppConfig(BaseEdcDeviceAppConfig):
     use_settings = True
     device_id = settings.DEVICE_ID
     device_role = settings.DEVICE_ROLE
-    
+
 
 class EdcDataManagerAppConfig(BaseEdcDataManagerAppConfig):
     identifier_pattern = subject_identifier
@@ -102,7 +102,7 @@ class EdcSmsAppConfig(BaseEdcSmsAppConfig):
     locator_model = 'potlako_subject.subjectlocator'
     consent_model = 'potlako_subject.subjectconsent'
     sms_model = 'potlako_subject.sms'
-    
+
 
 class EdcSyncAppConfig(BaseEdcSyncAppConfig):
     edc_sync_files_using = True
@@ -118,24 +118,24 @@ class EdcSyncFilesAppConfig(BaseEdcSyncFilesAppConfig):
     remote_media = config['edc_sync_files'].get('remote_media')
     tmp_folder = os.path.join(remote_media, 'transactions', 'tmp')
     incoming_folder = os.path.join(remote_media, 'transactions', 'incoming')
-    
-    
-    
+    media_path = os.path.join(settings.MEDIA_ROOT, 'verbal_consents')
+    media_dst = os.path.join(remote_media, 'verbal_consents')
+    media_tmp = os.path.join('/tmp/')
+
     def make_required_folders(self):
         """Makes all folders declared in the config if they
         do not exist.
         """
         client_folders = [self.outgoing_folder, self.archive_folder]
-         
-        server_folders = [self.incoming_folder, self.archive_folder, 
+
+        server_folders = [self.incoming_folder, self.archive_folder,
                           self.tmp_folder, self.pending_folder,
                           self.log_folder]
-         
+
         folder_dict = {'Client': client_folders,
-                     'CentralServer': server_folders}
+                       'CentralServer': server_folders}
         role = config['edc_device'].get('role')
-         
+
         for folder in folder_dict.get(role):
             if not os.path.exists(folder):
                 os.makedirs(folder)
-    
