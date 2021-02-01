@@ -1,5 +1,7 @@
-from datetime import datetime
+import configparser
+import os
 
+from datetime import datetime
 from dateutil.relativedelta import MO, TU, WE, TH, FR, SA, SU
 from dateutil.tz import gettz
 from django.apps import AppConfig as DjangoAppConfig
@@ -16,11 +18,16 @@ from edc_metadata.apps import AppConfig as BaseEdcMetadataAppConfig
 from edc_protocol.apps import AppConfig as BaseEdcProtocolAppConfig
 from edc_sms.apps import AppConfig as BaseEdcSmsAppConfig
 from edc_sync.apps import AppConfig as BaseEdcSyncAppConfig
+from edc_sync_files.apps import AppConfig as BaseEdcSyncFilesAppConfig
 from edc_visit_tracking.apps import AppConfig as BaseEdcVisitTrackingAppConfig
 from edc_visit_tracking.constants import SCHEDULED, UNSCHEDULED, LOST_VISIT
 from potlako_dashboard.patterns import subject_identifier
 
 style = color_style()
+
+config = configparser.RawConfigParser()
+config.read(os.path.join(settings.ETC_DIR,
+                         settings.CONFIG_FILE))
 
 
 class AppConfig(DjangoAppConfig):
@@ -85,7 +92,7 @@ class EdcDeviceAppConfig(BaseEdcDeviceAppConfig):
     use_settings = True
     device_id = settings.DEVICE_ID
     device_role = settings.DEVICE_ROLE
-    
+
 
 class EdcDataManagerAppConfig(BaseEdcDataManagerAppConfig):
     identifier_pattern = subject_identifier
@@ -95,6 +102,40 @@ class EdcSmsAppConfig(BaseEdcSmsAppConfig):
     locator_model = 'potlako_subject.subjectlocator'
     consent_model = 'potlako_subject.subjectconsent'
     sms_model = 'potlako_subject.sms'
-    
+
+
 class EdcSyncAppConfig(BaseEdcSyncAppConfig):
+    edc_sync_files_using = True
+    server_ip = config['edc_sync'].get('server_ip')
     base_template_name = 'potlako/base.html'
+
+
+class EdcSyncFilesAppConfig(BaseEdcSyncFilesAppConfig):
+    edc_sync_files_using = True
+    remote_host = config['edc_sync_files'].get('remote_host')
+    user = config['edc_sync_files'].get('sync_user')
+    usb_volume = config['edc_sync_files'].get('usb_volume')
+    remote_media = config['edc_sync_files'].get('remote_media')
+    tmp_folder = os.path.join(remote_media, 'transactions', 'tmp')
+    incoming_folder = os.path.join(remote_media, 'transactions', 'incoming')
+    media_path = os.path.join(settings.MEDIA_ROOT, 'verbal_consents')
+    media_dst = os.path.join(remote_media, 'verbal_consents')
+    media_tmp = os.path.join('/tmp/')
+
+    def make_required_folders(self):
+        """Makes all folders declared in the config if they
+        do not exist.
+        """
+        client_folders = [self.outgoing_folder, self.archive_folder]
+
+        server_folders = [self.incoming_folder, self.archive_folder,
+                          self.tmp_folder, self.pending_folder,
+                          self.log_folder]
+
+        folder_dict = {'Client': client_folders,
+                       'CentralServer': server_folders}
+        role = config['edc_device'].get('role')
+
+        for folder in folder_dict.get(role):
+            if not os.path.exists(folder):
+                os.makedirs(folder)
