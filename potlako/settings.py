@@ -39,7 +39,7 @@ INDEX_PAGE = 'potlako-plus.bhp.org.bw:8000'
 SECRET_KEY = 'o(^0$9zu2w5eby-^x&dd441d(@*#(+($can2uomfq%o(@p-fm+'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', 'potlako-plus.bhp.org.bw', '127.0.0.1']
 
@@ -78,8 +78,10 @@ INSTALLED_APPS = [
     'django_js_reverse',
     'rest_framework',
     'django_q',
+    'crispy_forms',
     'rest_framework.authtoken',
     'edc_action_item.apps.AppConfig',
+    'edc_call_manager.apps.AppConfig',
     'edc_consent.apps.AppConfig',
     'edc_prn.apps.AppConfig',
     'edc_dashboard.apps.AppConfig',
@@ -97,6 +99,7 @@ INSTALLED_APPS = [
     'edc_visit_schedule.apps.AppConfig',
     'edc_timepoint.apps.AppConfig',
     'potlako_dashboard.apps.AppConfig',
+    'potlako_follow.apps.AppConfig',
     'potlako_metadata_rules.apps.AppConfig',
     'potlako_reference.apps.AppConfig',
     'potlako_visit_schedule.apps.AppConfig',
@@ -248,6 +251,7 @@ DASHBOARD_URL_NAMES = {
     'data_manager_listboard_url': 'edc_data_manager:data_manager_listboard_url',
     'contact_listboard_url': 'edc_sms:contact_listboard_url',
     'subject_dashboard_url': 'potlako_dashboard:subject_dashboard_url',
+    'potlako_follow_listboard_url': 'potlako_follow:potlako_follow_listboard_url',
     'verbal_consent_url': 'potlako_dashboard:verbal_consent_url'
 }
 
@@ -258,6 +262,7 @@ DASHBOARD_BASE_TEMPLATES = {
     'contact_listboard_template': 'edc_sms/listboard.html',
     'dashboard_base_template': 'potlako/base.html',
     'data_manager_listboard_template': 'edc_data_manager/listboard.html',
+    'potlako_follow_listboard_template': 'potlako_follow/follow_listboard.html',
     'screening_listboard_template': 'potlako_dashboard/screening/listboard.html',
     'endpoint_listboard_template': 'potlako_dashboard/endpoint/listboard.html',
     'subject_listboard_template': 'potlako_dashboard/subject/listboard.html',

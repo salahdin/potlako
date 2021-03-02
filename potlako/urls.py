@@ -33,9 +33,11 @@ from edc_sms.admin_site import edc_sms_admin
 from edc_sync.admin_site import edc_sync_admin
 from edc_sync_files.admin_site import edc_sync_files_admin
 from edc_visit_schedule.admin_site import edc_visit_schedule_admin
+from edc_call_manager.admin_site import edc_call_manager_admin
 
 from potlako_subject.admin_site import potlako_subject_admin
 from potlako_prn.admin_site import potlako_prn_admin
+from potlako_follow.admin_site import potlako_follow_admin
 from .views import HomeView, AdministrationView
 
 
@@ -49,6 +51,7 @@ urlpatterns = [
     path('admin/', edc_appointment_admin.urls),
     path('admin/', edc_lab_admin.urls),
     path('admin/', edc_locator_admin.urls),
+    path('admin/', potlako_follow_admin.urls),
     path('admin/', edc_identifier_admin.urls),
     path('admin/', edc_metadata_admin.urls),
     path('admin/', edc_registration_admin.urls),
@@ -59,6 +62,7 @@ urlpatterns = [
     path('admin/', edc_sync_admin.urls),
     path('admin/', edc_sync_files_admin.urls),
     path('admin/edc_visit_schedule/', edc_visit_schedule_admin.urls),
+    path('admin/edc_call_manager/', edc_call_manager_admin.urls),
 
     path('administration/', AdministrationView.as_view(),
          name='administration_url'),
@@ -74,6 +78,8 @@ urlpatterns = [
     path('edc_device/', include('edc_device.urls')),
     path('edc_locator/', include('edc_locator.urls')),
     path('edc_label/', include('edc_label.urls')),
+    path('potlako_follow/', include('potlako_follow.urls')),
+    path('edc_call_manager/', include('edc_call_manager.urls')),
     path('edc_metadata/', include('edc_metadata.urls')),
     path('edc_protocol/', include('edc_protocol.urls')),
     path('edc_identifier/', include('edc_identifier.urls')),
