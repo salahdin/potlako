@@ -254,6 +254,7 @@ DASHBOARD_URL_NAMES = {
     'contact_listboard_url': 'edc_sms:contact_listboard_url',
     'subject_dashboard_url': 'potlako_dashboard:subject_dashboard_url',
     'potlako_follow_listboard_url': 'potlako_follow:potlako_follow_listboard_url',
+    'potlako_navigation_listboard_url': 'potlako_follow:potlako_navigation_listboard_url',
     'verbal_consent_url': 'potlako_dashboard:verbal_consent_url'
 }
 
@@ -265,6 +266,7 @@ DASHBOARD_BASE_TEMPLATES = {
     'dashboard_base_template': 'potlako/base.html',
     'data_manager_listboard_template': 'edc_data_manager/listboard.html',
     'potlako_follow_listboard_template': 'potlako_follow/follow_listboard.html',
+    'potlako_navigation_listboard_template': 'potlako_follow/navigation_listboard.html',
     'screening_listboard_template': 'potlako_dashboard/screening/listboard.html',
     'endpoint_listboard_template': 'potlako_dashboard/endpoint/listboard.html',
     'subject_listboard_template': 'potlako_dashboard/subject/listboard.html',

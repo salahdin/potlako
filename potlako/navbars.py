@@ -34,9 +34,9 @@ potlako.append_item(
 potlako.append_item(
     NavbarItem(
         name='worklist',
-        title='Worklist',
+        title='Follows',
         label='Worklist',
         fa_icon='fa-user-plus',
-        url_name=settings.DASHBOARD_URL_NAMES.get('potlako_follow_listboard_url')))
+        url_name='potlako_follow:home_url'))
 
 site_navbars.register(potlako)
