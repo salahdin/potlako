@@ -31,7 +31,6 @@ LOGIN_REDIRECT_URL = 'home_url'
 
 INDEX_PAGE = 'potlako-plus.bhp.org.bw:8000'
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
@@ -131,7 +130,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'edc_dashboard.middleware.DashboardMiddleware',
     'edc_subject_dashboard.middleware.DashboardMiddleware',
-#     'edc_lab_dashboard.middleware.DashboardMiddleware'
 ]
 
 ROOT_URLCONF = 'potlako.urls'
@@ -171,7 +169,7 @@ DATABASES = {
         'NAME': DB_NAME,
         'USER': DB_USER,
         'PASSWORD': DB_PASSWORD,
-        'HOST': HOST,   # Or an IP Address that your DB is hosted on
+        'HOST': HOST,  # Or an IP Address that your DB is hosted on
         'PORT': PORT,
     }
 }
@@ -292,4 +290,3 @@ EDC_SYNC_SERVER_IP = config['edc_sync'].get('server_ip')
 EDC_SYNC_FILES_REMOTE_HOST = config['edc_sync_files'].get('remote_host')
 EDC_SYNC_FILES_USER = config['edc_sync_files'].get('sync_user')
 EDC_SYNC_FILES_USB_VOLUME = config['edc_sync_files'].get('usb_volume')
-
