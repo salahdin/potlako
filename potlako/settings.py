@@ -31,7 +31,6 @@ LOGIN_REDIRECT_URL = 'home_url'
 
 INDEX_PAGE = 'potlako-plus.bhp.org.bw:8000'
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
@@ -41,7 +40,7 @@ SECRET_KEY = 'o(^0$9zu2w5eby-^x&dd441d(@*#(+($can2uomfq%o(@p-fm+'
 # KEY_PATH = os.path.join(ETC_DIR, 'crypto_fields')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', 'potlako-plus.bhp.org.bw', '127.0.0.1']
 
@@ -80,8 +79,10 @@ INSTALLED_APPS = [
     'django_js_reverse',
     'rest_framework',
     'django_q',
+    'crispy_forms',
     'rest_framework.authtoken',
     'edc_action_item.apps.AppConfig',
+    'edc_call_manager.apps.AppConfig',
     'edc_consent.apps.AppConfig',
     'edc_prn.apps.AppConfig',
     'edc_dashboard.apps.AppConfig',
@@ -97,7 +98,9 @@ INSTALLED_APPS = [
     'edc_registration.apps.AppConfig',
     'edc_visit_schedule.apps.AppConfig',
     'edc_timepoint.apps.AppConfig',
+    'edc_calender.apps.AppConfig',
     'potlako_dashboard.apps.AppConfig',
+    'potlako_follow.apps.AppConfig',
     'potlako_metadata_rules.apps.AppConfig',
     'potlako_reference.apps.AppConfig',
     'potlako_visit_schedule.apps.AppConfig',
@@ -128,7 +131,6 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'edc_dashboard.middleware.DashboardMiddleware',
     'edc_subject_dashboard.middleware.DashboardMiddleware',
-#     'edc_lab_dashboard.middleware.DashboardMiddleware'
 ]
 
 ROOT_URLCONF = 'potlako.urls'
@@ -168,7 +170,7 @@ DATABASES = {
         'NAME': DB_NAME,
         'USER': DB_USER,
         'PASSWORD': DB_PASSWORD,
-        'HOST': HOST,   # Or an IP Address that your DB is hosted on
+        'HOST': HOST,  # Or an IP Address that your DB is hosted on
         'PORT': PORT,
     }
 }
@@ -250,6 +252,8 @@ DASHBOARD_URL_NAMES = {
     'data_manager_listboard_url': 'edc_data_manager:data_manager_listboard_url',
     'contact_listboard_url': 'edc_sms:contact_listboard_url',
     'subject_dashboard_url': 'potlako_dashboard:subject_dashboard_url',
+    'potlako_follow_listboard_url': 'potlako_follow:potlako_follow_listboard_url',
+    'potlako_navigation_listboard_url': 'potlako_follow:potlako_navigation_listboard_url',
     'verbal_consent_url': 'potlako_dashboard:verbal_consent_url'
 }
 
@@ -260,6 +264,8 @@ DASHBOARD_BASE_TEMPLATES = {
     'contact_listboard_template': 'edc_sms/listboard.html',
     'dashboard_base_template': 'potlako/base.html',
     'data_manager_listboard_template': 'edc_data_manager/listboard.html',
+    'potlako_follow_listboard_template': 'potlako_follow/follow_listboard.html',
+    'potlako_navigation_listboard_template': 'potlako_follow/navigation_listboard.html',
     'screening_listboard_template': 'potlako_dashboard/screening/listboard.html',
     'endpoint_listboard_template': 'potlako_dashboard/endpoint/listboard.html',
     'subject_listboard_template': 'potlako_dashboard/subject/listboard.html',
@@ -285,4 +291,3 @@ EDC_SYNC_SERVER_IP = config['edc_sync'].get('server_ip')
 EDC_SYNC_FILES_REMOTE_HOST = config['edc_sync_files'].get('remote_host')
 EDC_SYNC_FILES_USER = config['edc_sync_files'].get('sync_user')
 EDC_SYNC_FILES_USB_VOLUME = config['edc_sync_files'].get('usb_volume')
-

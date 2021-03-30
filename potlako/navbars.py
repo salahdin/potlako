@@ -31,4 +31,10 @@ potlako.append_item(
                fa_icon='fa-exchange',
                url_name='edc_sync:home_url'))
 
+potlako.append_item(
+    NavbarItem(name='worklist',
+               label='Follow ups',
+               fa_icon='fa-exchange',
+               url_name='potlako_follow:home_url'))
+
 site_navbars.register(potlako)
