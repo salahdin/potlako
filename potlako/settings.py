@@ -98,7 +98,7 @@ INSTALLED_APPS = [
     'edc_registration.apps.AppConfig',
     'edc_visit_schedule.apps.AppConfig',
     'edc_timepoint.apps.AppConfig',
-    'edc_calender.apps.AppConfig',
+    'edc_calendar.apps.AppConfig',
     'potlako_dashboard.apps.AppConfig',
     'potlako_follow.apps.AppConfig',
     'potlako_metadata_rules.apps.AppConfig',
@@ -254,6 +254,7 @@ DASHBOARD_URL_NAMES = {
     'subject_dashboard_url': 'potlako_dashboard:subject_dashboard_url',
     'potlako_follow_listboard_url': 'potlako_follow:potlako_follow_listboard_url',
     'potlako_navigation_listboard_url': 'potlako_follow:potlako_navigation_listboard_url',
+    'potlako_investigation_listboard_url': 'potlako_follow:potlako_investigation_listboard_url',
     'verbal_consent_url': 'potlako_dashboard:verbal_consent_url'
 }
 
@@ -266,6 +267,7 @@ DASHBOARD_BASE_TEMPLATES = {
     'data_manager_listboard_template': 'edc_data_manager/listboard.html',
     'potlako_follow_listboard_template': 'potlako_follow/follow_listboard.html',
     'potlako_navigation_listboard_template': 'potlako_follow/navigation_listboard.html',
+    'potlako_investigation_listboard_template': 'potlako_follow/investigation_fu_listboard.html',
     'screening_listboard_template': 'potlako_dashboard/screening/listboard.html',
     'endpoint_listboard_template': 'potlako_dashboard/endpoint/listboard.html',
     'subject_listboard_template': 'potlako_dashboard/subject/listboard.html',
