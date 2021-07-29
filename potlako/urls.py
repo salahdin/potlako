@@ -22,7 +22,7 @@ from django.views.generic.base import RedirectView
 
 from edc_action_item.admin_site import edc_action_item_admin
 from edc_appointment.admin_site import edc_appointment_admin
-from edc_calendar.admin_site import edc_calender_admin
+from edc_calendar.admin_site import edc_calendar_admin
 from edc_data_manager.admin_site import edc_data_manager_admin
 from edc_identifier.admin_site import edc_identifier_admin
 from edc_lab.admin_site import edc_lab_admin
@@ -59,7 +59,7 @@ urlpatterns = [
     path('admin/', edc_action_item_admin.urls),
     path('admin/', edc_data_manager_admin.urls),
     path('admin/', edc_sms_admin.urls),
-    path('admin/', edc_calender_admin.urls),
+    path('admin/', edc_calendar_admin.urls),
     path('admin/', edc_sync_admin.urls),
     path('admin/', edc_sync_files_admin.urls),
     path('admin/edc_visit_schedule/', edc_visit_schedule_admin.urls),
