@@ -22,7 +22,7 @@ from django.views.generic.base import RedirectView
 
 from edc_action_item.admin_site import edc_action_item_admin
 from edc_appointment.admin_site import edc_appointment_admin
-from edc_calender.admin_site import edc_calender_admin
+from edc_calendar.admin_site import edc_calendar_admin
 from edc_data_manager.admin_site import edc_data_manager_admin
 from edc_identifier.admin_site import edc_identifier_admin
 from edc_lab.admin_site import edc_lab_admin
@@ -40,7 +40,6 @@ from potlako_subject.admin_site import potlako_subject_admin
 from potlako_prn.admin_site import potlako_prn_admin
 from potlako_follow.admin_site import potlako_follow_admin
 from .views import HomeView, AdministrationView
-
 
 urlpatterns = [
     path('accounts/', include('edc_base.auth.urls')),
@@ -60,7 +59,7 @@ urlpatterns = [
     path('admin/', edc_action_item_admin.urls),
     path('admin/', edc_data_manager_admin.urls),
     path('admin/', edc_sms_admin.urls),
-    path('admin/', edc_calender_admin.urls),
+    path('admin/', edc_calendar_admin.urls),
     path('admin/', edc_sync_admin.urls),
     path('admin/', edc_sync_files_admin.urls),
     path('admin/edc_visit_schedule/', edc_visit_schedule_admin.urls),
@@ -89,10 +88,9 @@ urlpatterns = [
     path('edc_registration/', include('edc_registration.urls')),
     path('edc_subject_dashboard/', include('edc_subject_dashboard.urls')),
     path('edc_sms/', include('edc_sms.urls')),
-    path('edc_calender/', include('edc_calender.urls')),
+    path('edc_calendar/', include('edc_calendar.urls')),
     path('edc_sync/', include('edc_sync.urls')),
     path('edc_sync_files/', include('edc_sync_files.urls')),
-    
 
     path('edc_visit_schedule/', include('edc_visit_schedule.urls')),
     path('potlako_subject/', include('potlako_subject.urls')),
