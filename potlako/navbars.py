@@ -19,6 +19,12 @@ potlako.append_item(
         url_name=settings.DASHBOARD_URL_NAMES.get('subject_listboard_url')))
 
 potlako.append_item(
+    NavbarItem(name='reports',
+               label='Reports',
+               fa_icon='fa-cogs',
+               url_name='potlako_reports:home_url'))
+
+potlako.append_item(
     NavbarItem(
         name='endpoint_recordings',
         label='Endpoint Recordings',

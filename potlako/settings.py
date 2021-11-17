@@ -10,10 +10,10 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
+import configparser
 import os
 import sys
 
-import configparser
 from django.core.management.color import color_style
 
 # from .logging import LOGGING
@@ -105,6 +105,7 @@ INSTALLED_APPS = [
     'potlako_reference.apps.AppConfig',
     'potlako_visit_schedule.apps.AppConfig',
     'potlako_prn.apps.AppConfig',
+    'potlako_reports.apps.AppConfig',
     'potlako_subject.apps.AppConfig',
     'potlako.apps.EdcDataManagerAppConfig',
     'potlako.apps.EdcAppointmentAppConfig',
