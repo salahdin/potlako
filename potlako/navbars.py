@@ -1,7 +1,6 @@
 from django.conf import settings
 from edc_navbar import NavbarItem, site_navbars, Navbar
 
-
 potlako = Navbar(name='potlako')
 
 potlako.append_item(
@@ -17,6 +16,12 @@ potlako.append_item(
         label='Subjects',
         fa_icon='far fa-user-circle',
         url_name=settings.DASHBOARD_URL_NAMES.get('subject_listboard_url')))
+
+potlako.append_item(
+    NavbarItem(name='reports',
+               label='Reports',
+               fa_icon='fa-cogs',
+               url_name='potlako_reports:home_url'))
 
 potlako.append_item(
     NavbarItem(
