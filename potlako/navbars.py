@@ -1,7 +1,6 @@
 from django.conf import settings
 from edc_navbar import NavbarItem, site_navbars, Navbar
 
-
 potlako = Navbar(name='potlako')
 
 potlako.append_item(
