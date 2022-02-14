@@ -214,6 +214,7 @@ LANGUAGES = (
 )
 
 DATE_INPUT_FORMATS = ['%d-%m-%Y']
+SHORT_DATE_FORMAT = 'd/m/Y'
 
 CELLPHONE_REGEX = '^[7]{1}[12345678]{1}[0-9]{6}$'
 TELEPHONE_REGEX = '^[2-8]{1}[0-9]{6}$'
