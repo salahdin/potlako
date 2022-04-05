@@ -34,10 +34,10 @@ from edc_sms.admin_site import edc_sms_admin
 from edc_sync.admin_site import edc_sync_admin
 from edc_sync_files.admin_site import edc_sync_files_admin
 from edc_visit_schedule.admin_site import edc_visit_schedule_admin
+
 from potlako_follow.admin_site import potlako_follow_admin
 from potlako_prn.admin_site import potlako_prn_admin
 from potlako_subject.admin_site import potlako_subject_admin
-
 from .views import HomeView, AdministrationView
 
 urlpatterns = [
@@ -96,11 +96,12 @@ urlpatterns = [
     path('potlako_prn/', include('potlako_prn.urls')),
     path('potlako_reports/', include('potlako_reports.urls')),
     path('subject/', include('potlako_dashboard.urls')),
+    path('api/', include('potlako_rest_api.urls')),
 
     path('switch_sites/', LogoutView.as_view(next_page=settings.INDEX_PAGE),
          name='switch_sites_url'),
     path('home/', HomeView.as_view(), name='home_url'),
     path('', HomeView.as_view(), name='home_url'),
-]
+    ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
