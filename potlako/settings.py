@@ -198,7 +198,6 @@ AUTH_PASSWORD_VALIDATORS = [
     ]
 
 REST_FRAMEWORK = {
-    'PAGE_SIZE': 1,
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.TokenAuthentication',
@@ -311,3 +310,5 @@ CORS_ALLOWED_ORIGIN_REGEXES = [
     'http://localhost:8000',
     'https://potlako-plus-dev.bhp.org.bw'
     ]
+
+
