@@ -1,7 +1,7 @@
 import configparser
 import os
-
 from datetime import datetime
+
 from dateutil.relativedelta import MO, TU, WE, TH, FR, SA, SU
 from dateutil.tz import gettz
 from django.apps import AppConfig as DjangoAppConfig
@@ -21,6 +21,7 @@ from edc_sync.apps import AppConfig as BaseEdcSyncAppConfig
 from edc_sync_files.apps import AppConfig as BaseEdcSyncFilesAppConfig
 from edc_visit_tracking.apps import AppConfig as BaseEdcVisitTrackingAppConfig
 from edc_visit_tracking.constants import SCHEDULED, UNSCHEDULED, LOST_VISIT
+
 from potlako_dashboard.patterns import subject_identifier
 
 style = color_style()
@@ -65,7 +66,8 @@ class EdcIdentifierAppConfig(BaseEdcIdentifierAppConfig):
 
 class EdcVisitTrackingAppConfig(BaseEdcVisitTrackingAppConfig):
     visit_models = {
-        'potlako_subject': ('subject_visit', 'potlako_subject.subjectvisit')}
+        'potlako_subject': ('subject_visit', 'potlako_subject.subjectvisit')
+        }
 
 
 class EdcFacilityAppConfig(BaseEdcFacilityAppConfig):
@@ -74,13 +76,13 @@ class EdcFacilityAppConfig(BaseEdcFacilityAppConfig):
         '7-day clinic': dict(days=[MO, TU, WE, TH, FR, SA, SU],
                              slots=[100, 100, 100, 100, 100, 100, 100]),
         '5-day clinic': dict(days=[MO, TU, WE, TH, FR],
-                             slots=[100, 100, 100, 100, 100])}
+                             slots=[100, 100, 100, 100, 100])
+        }
 
 
 class EdcMetadataAppConfig(BaseEdcMetadataAppConfig):
-
     reason_field = {'potlako_subject.subjectvisit': 'reason'}
-    other_visit_reasons = [ 'off study', 'deferred', 'death']
+    other_visit_reasons = ['off study', 'deferred', 'death']
     other_create_visit_reasons = [
         'initial_visit/contact', 'fu_visit/contact',
         'unscheduled_visit/contact', 'missed_visit']
@@ -108,6 +110,7 @@ class EdcSyncAppConfig(BaseEdcSyncAppConfig):
     edc_sync_files_using = True
     server_ip = config['edc_sync'].get('server_ip')
     base_template_name = 'potlako/base.html'
+    update_models = True
 
 
 class EdcSyncFilesAppConfig(BaseEdcSyncFilesAppConfig):
@@ -133,7 +136,8 @@ class EdcSyncFilesAppConfig(BaseEdcSyncFilesAppConfig):
                           self.log_folder]
 
         folder_dict = {'Client': client_folders,
-                       'CentralServer': server_folders}
+                       'CentralServer': server_folders
+                       }
         role = config['edc_device'].get('role')
 
         for folder in folder_dict.get(role):
