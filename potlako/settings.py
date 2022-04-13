@@ -198,7 +198,6 @@ AUTH_PASSWORD_VALIDATORS = [
     ]
 
 REST_FRAMEWORK = {
-    'PAGE_SIZE': 1,
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.TokenAuthentication',
@@ -229,6 +228,10 @@ USE_I18N = True
 USE_L10N = False
 
 USE_TZ = True
+
+# server api for updating navigation plans
+EVALUATION_TIMELINE = 'http://localhost:8000/api/evaluation_timeline/'
+NAV_PLAN_API = 'http://localhost:8000/api/navigation_summary_and_plan/'
 
 # Django q configurations
 
