@@ -230,8 +230,8 @@ USE_L10N = False
 USE_TZ = True
 
 # server api for updating navigation plans
-EVALUATION_TIMELINE = 'https://potlako-plus-dev.bhp.org.bw/api/evaluation_timeline/'
-NAV_PLAN_API = 'https://potlako-plus-dev.bhp.org.bw/api/navigation_summary_and_plan/'
+EVALUATION_TIMELINE = config['edc_sync'].get('evaluation_timeline_api')
+NAV_PLAN_API = config['edc_sync'].get('nav_plan_api')
 
 # Django q configurations
 
