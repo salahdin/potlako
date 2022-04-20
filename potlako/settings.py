@@ -100,6 +100,7 @@ INSTALLED_APPS = [
     'edc_timepoint.apps.AppConfig',
     'edc_calendar.apps.AppConfig',
     'potlako_dashboard.apps.AppConfig',
+    'potlako_rest_api.apps.AppConfig',
     'potlako_follow.apps.AppConfig',
     'potlako_metadata_rules.apps.AppConfig',
     'potlako_reference.apps.AppConfig',
@@ -119,7 +120,7 @@ INSTALLED_APPS = [
     'potlako.apps.EdcFacilityAppConfig',
     'potlako.apps.EdcIdentifierAppConfig',
     'potlako.apps.EdcSmsAppConfig',
-]
+    ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -130,9 +131,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'edc_dashboard.middleware.DashboardMiddleware',
     'edc_subject_dashboard.middleware.DashboardMiddleware',
-]
+    ]
 
 ROOT_URLCONF = 'potlako.urls'
 
@@ -147,10 +150,10 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-            ],
+                ],
+            },
         },
-    },
-]
+    ]
 
 WSGI_APPLICATION = 'potlako.wsgi.application'
 
@@ -173,34 +176,33 @@ DATABASES = {
         'PASSWORD': DB_PASSWORD,
         'HOST': HOST,  # Or an IP Address that your DB is hosted on
         'PORT': PORT,
+        }
     }
-}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME':
-     'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+         'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
      },
     {'NAME':
-     'django.contrib.auth.password_validation.MinimumLengthValidator',
+         'django.contrib.auth.password_validation.MinimumLengthValidator',
      },
     {'NAME':
-     'django.contrib.auth.password_validation.CommonPasswordValidator',
+         'django.contrib.auth.password_validation.CommonPasswordValidator',
      },
     {'NAME':
-     'django.contrib.auth.password_validation.NumericPasswordValidator',
+         'django.contrib.auth.password_validation.NumericPasswordValidator',
      },
-]
+    ]
 
 REST_FRAMEWORK = {
-    'PAGE_SIZE': 1,
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.TokenAuthentication',
-    ),
-}
+        ),
+    }
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
@@ -211,9 +213,10 @@ LANGUAGES = (
     ('tn', 'Setswana'),
     ('en', 'English'),
     ('kck', 'Ikalanga'),
-)
+    )
 
 DATE_INPUT_FORMATS = ['%d-%m-%Y']
+SHORT_DATE_FORMAT = 'd/m/Y'
 
 CELLPHONE_REGEX = '^[7]{1}[12345678]{1}[0-9]{6}$'
 TELEPHONE_REGEX = '^[2-8]{1}[0-9]{6}$'
@@ -226,13 +229,17 @@ USE_L10N = False
 
 USE_TZ = True
 
+# server api for updating navigation plans
+EVALUATION_TIMELINE = config['edc_sync'].get('evaluation_timeline_api')
+NAV_PLAN_API = config['edc_sync'].get('nav_plan_api')
+
 # Django q configurations
 
 Q_CLUSTER = {
     'name': 'edc_sms',
     'retry': 60,
     'orm': 'default',
-}
+    }
 
 SITE_CODE = '40'
 DEFAULT_STUDY_SITE = '40'
@@ -257,7 +264,7 @@ DASHBOARD_URL_NAMES = {
     'potlako_navigation_listboard_url': 'potlako_follow:potlako_navigation_listboard_url',
     'potlako_investigation_listboard_url': 'potlako_follow:potlako_investigation_listboard_url',
     'verbal_consent_url': 'potlako_dashboard:verbal_consent_url'
-}
+    }
 
 LAB_DASHBOARD_URL_NAMES = {}
 
@@ -273,7 +280,7 @@ DASHBOARD_BASE_TEMPLATES = {
     'endpoint_listboard_template': 'potlako_dashboard/endpoint/listboard.html',
     'subject_listboard_template': 'potlako_dashboard/subject/listboard.html',
     'subject_dashboard_template': 'potlako_dashboard/subject/dashboard.html',
-}
+    }
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 GIT_DIR = BASE_DIR
@@ -294,3 +301,16 @@ EDC_SYNC_SERVER_IP = config['edc_sync'].get('server_ip')
 EDC_SYNC_FILES_REMOTE_HOST = config['edc_sync_files'].get('remote_host')
 EDC_SYNC_FILES_USER = config['edc_sync_files'].get('sync_user')
 EDC_SYNC_FILES_USB_VOLUME = config['edc_sync_files'].get('usb_volume')
+
+CORS_ALLOW_ALL_ORIGINS = True
+# If this is used then `CORS_ALLOWED_ORIGINS` will not have any effect
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:8000',
+    'https://potlako-plus-dev.bhp.org.bw'
+    ]
+# If this is used, then not need to use `CORS_ALLOW_ALL_ORIGINS = True`
+CORS_ALLOWED_ORIGIN_REGEXES = [
+    'http://localhost:8000',
+    'https://potlako-plus-dev.bhp.org.bw'
+    ]
