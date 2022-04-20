@@ -123,3 +123,14 @@ ENV/
 
 # mypy
 .mypy_cache/
+crypto_fields/user-aes-local.key
+crypto_fields/user-aes-restricted.key
+crypto_fields/user-rsa-local-private.pem
+crypto_fields/user-rsa-local-public.pem
+crypto_fields/user-rsa-restricted-private.pem
+crypto_fields/user-rsa-restricted-public.pem
+crypto_fields/user-salt-local.key
+crypto_fields/user-salt-restricted.key
+requirements-dev.txt
+requirements-dev.txt
+*.key
