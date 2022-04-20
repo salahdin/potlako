@@ -13,6 +13,8 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from potlako_subject.admin_site import potlako_subject_admin
+
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
@@ -20,9 +22,6 @@ from django.contrib.auth.views import LogoutView
 from django.urls.conf import path, include
 from django.views.generic.base import RedirectView
 from edc_action_item.admin_site import edc_action_item_admin
-from edc_appointment.admin_site import edc_appointment_admin
-from edc_calendar.admin_site import edc_calendar_admin
-from edc_call_manager.admin_site import edc_call_manager_admin
 from edc_data_manager.admin_site import edc_data_manager_admin
 from edc_identifier.admin_site import edc_identifier_admin
 from edc_lab.admin_site import edc_lab_admin
@@ -31,13 +30,16 @@ from edc_metadata.admin_site import edc_metadata_admin
 from edc_reference.admin_site import edc_reference_admin
 from edc_registration.admin_site import edc_registration_admin
 from edc_sms.admin_site import edc_sms_admin
+
+from edc_appointment.admin_site import edc_appointment_admin
+from edc_calendar.admin_site import edc_calendar_admin
+from edc_call_manager.admin_site import edc_call_manager_admin
 from edc_sync.admin_site import edc_sync_admin
 from edc_sync_files.admin_site import edc_sync_files_admin
 from edc_visit_schedule.admin_site import edc_visit_schedule_admin
-
 from potlako_follow.admin_site import potlako_follow_admin
 from potlako_prn.admin_site import potlako_prn_admin
-from potlako_subject.admin_site import potlako_subject_admin
+
 from .views import HomeView, AdministrationView
 
 urlpatterns = [
@@ -94,7 +96,7 @@ urlpatterns = [
     path('edc_visit_schedule/', include('edc_visit_schedule.urls')),
     path('potlako_subject/', include('potlako_subject.urls')),
     path('potlako_prn/', include('potlako_prn.urls')),
-    path('potlako_reports/', include('potlako_reports.urls')),
+    # path('potlako_reports/', include('potlako_reports.urls')),
     path('subject/', include('potlako_dashboard.urls')),
     path('api/', include('potlako_rest_api.urls')),
 
