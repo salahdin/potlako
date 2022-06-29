@@ -37,6 +37,7 @@ class AppConfig(DjangoAppConfig):
 
 class EdcAppointmentAppConfig(BaseEdcAppointmentAppConfig):
     send_sms_reminders = True
+    apply_community_filter = True
     configurations = [
         AppointmentConfig(
             model='edc_appointment.appointment',
