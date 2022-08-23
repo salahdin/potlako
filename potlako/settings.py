@@ -106,7 +106,7 @@ INSTALLED_APPS = [
     'potlako_reference.apps.AppConfig',
     'potlako_visit_schedule.apps.AppConfig',
     'potlako_prn.apps.AppConfig',
-    # 'potlako_reports.apps.AppConfig',
+    'potlako_reports.apps.AppConfig',
     'potlako_subject.apps.AppConfig',
     'potlako.apps.EdcDataManagerAppConfig',
     'potlako.apps.EdcAppointmentAppConfig',

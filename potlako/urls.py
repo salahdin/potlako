@@ -96,7 +96,7 @@ urlpatterns = [
     path('edc_visit_schedule/', include('edc_visit_schedule.urls')),
     path('potlako_subject/', include('potlako_subject.urls')),
     path('potlako_prn/', include('potlako_prn.urls')),
-    # path('potlako_reports/', include('potlako_reports.urls')),
+    path('potlako_reports/', include('potlako_reports.urls')),
     path('subject/', include('potlako_dashboard.urls')),
     path('api/', include('potlako_rest_api.urls')),
 
