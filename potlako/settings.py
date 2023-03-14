@@ -74,6 +74,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django_crypto_fields.apps.AppConfig',
     'django_extensions',
+    'django_revision.apps.AppConfig',
     'simple_history',
     'corsheaders',
     'django_js_reverse',
@@ -120,6 +121,7 @@ INSTALLED_APPS = [
     'potlako.apps.EdcFacilityAppConfig',
     'potlako.apps.EdcIdentifierAppConfig',
     'potlako.apps.EdcSmsAppConfig',
+    'cacheops',
     ]
 
 MIDDLEWARE = [
@@ -176,14 +178,6 @@ DATABASES = {
         'PASSWORD': DB_PASSWORD,
         'HOST': HOST,  # Or an IP Address that your DB is hosted on
         'PORT': PORT,
-        },
-    'backup06': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'potlako_live_06',
-        'USER': 'root',
-        'PASSWORD': 'cc3721bb',
-        'HOST': '127.0.0.1',  # Or an IP Address that your DB is hosted on
-        'PORT': '5001',
         }
     }
 
@@ -305,6 +299,9 @@ COMMUNITIES = config['communities']
 DEVICE_ID = config['edc_device'].get('device_id', '99')
 DEVICE_ROLE = config['edc_device'].get('role')
 
+DEVICE_ID = 40
+DEVICE_ROLE = 'Client'
+
 EDC_SYNC_SERVER_IP = config['edc_sync'].get('server_ip')
 EDC_SYNC_FILES_REMOTE_HOST = config['edc_sync_files'].get('remote_host')
 EDC_SYNC_FILES_USER = config['edc_sync_files'].get('sync_user')
@@ -317,8 +314,23 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost:8000',
     'https://potlako-plus-dev.bhp.org.bw'
     ]
+
 # If this is used, then not need to use `CORS_ALLOW_ALL_ORIGINS = True`
 CORS_ALLOWED_ORIGIN_REGEXES = [
     'http://localhost:8000',
     'https://potlako-plus-dev.bhp.org.bw'
     ]
+
+# url to redis
+CACHEOPS_REDIS = "redis://localhost:6379/1"
+
+CACHEOPS = {
+
+    'auth.user': {'ops': 'all', 'timeout': 60*15},
+    'auth.*': {'ops': 'all', 'timeout': 60*15},
+    'potlako_subject.models.onschedule.*': None,
+    'edc_appointment.models.appointment.*': None,
+    'potlako_subject.models.navigation_summary_and_plan.*': None,
+    '*.*': {'ops': 'all', 'timeout': 60*60*24}, 
+    '*.*': {'ops': 'get', 'timeout': 60*60*24}, 
+}
