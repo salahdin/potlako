@@ -299,9 +299,6 @@ COMMUNITIES = config['communities']
 DEVICE_ID = config['edc_device'].get('device_id', '99')
 DEVICE_ROLE = config['edc_device'].get('role')
 
-DEVICE_ID = 40
-DEVICE_ROLE = 'Client'
-
 EDC_SYNC_SERVER_IP = config['edc_sync'].get('server_ip')
 EDC_SYNC_FILES_REMOTE_HOST = config['edc_sync_files'].get('remote_host')
 EDC_SYNC_FILES_USER = config['edc_sync_files'].get('sync_user')
