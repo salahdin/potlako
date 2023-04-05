@@ -37,7 +37,7 @@ $(document).ready(function(){
 
 {% block alert %}
     {{block.super}}
-    {% if '127.0.0.1' in request.build_absolute_uri or 'localhost' in request.build_absolute_uri   %}
+    {% if OFFLINE %}
         <div class="col-md-12">
             <div class="alert alert-info">
                 <i class="fa fa-exclamation-circle"></i>
