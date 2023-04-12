@@ -134,3 +134,5 @@ crypto_fields/user-salt-restricted.key
 requirements-dev.txt
 requirements-dev.txt
 *.key
+.idea/*
+crypto_fields/*
