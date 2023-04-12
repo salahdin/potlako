@@ -35,6 +35,17 @@ $(document).ready(function(){
 
 {% endblock topbar_navbar_extra_items %}
 
+{% block alert %}
+    {{block.super}}
+    {% if OFFLINE %}
+        <div class="col-md-12">
+            <div class="alert alert-info">
+                <i class="fa fa-exclamation-circle"></i>
+                The system is currently running offline
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
 
 {% block modals %}
 
