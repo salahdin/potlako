@@ -37,12 +37,12 @@ INDEX_PAGE = 'potlako-plus.bhp.org.bw:8000'
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'o(^0$9zu2w5eby-^x&dd441d(@*#(+($can2uomfq%o(@p-fm+'
 
-# KEY_PATH = os.path.join(ETC_DIR, 'crypto_fields')
+KEY_PATH = os.path.join(ETC_DIR, 'crypto_fields')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-OFFLINE = True
+OFFLINE = False
 
 ALLOWED_HOSTS = ['localhost', 'potlako-plus.bhp.org.bw', '127.0.0.1']
 
@@ -117,13 +117,13 @@ INSTALLED_APPS = [
     'potlako.apps.EdcBaseAppConfig',
     'potlako.apps.EdcProtocolAppConfig',
     'potlako.apps.EdcVisitTrackingAppConfig',
-    'potlako.apps.AppConfig',
     'potlako.apps.EdcSyncAppConfig',
     'potlako.apps.EdcSyncFilesAppConfig',
     'potlako.apps.EdcFacilityAppConfig',
     'potlako.apps.EdcIdentifierAppConfig',
     'potlako.apps.EdcSmsAppConfig',
-    'cacheops',
+    'potlako.apps.AppConfig',
+    'cacheops'
     ]
 
 MIDDLEWARE = [
@@ -189,16 +189,16 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME':
-         'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
      },
     {'NAME':
-         'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'django.contrib.auth.password_validation.MinimumLengthValidator',
      },
     {'NAME':
-         'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'django.contrib.auth.password_validation.CommonPasswordValidator',
      },
     {'NAME':
-         'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'django.contrib.auth.password_validation.NumericPasswordValidator',
      },
     ]
 
@@ -331,6 +331,6 @@ CACHEOPS = {
     'potlako_subject.models.onschedule.*': None,
     'edc_appointment.models.appointment.*': None,
     'potlako_subject.models.navigation_summary_and_plan.*': None,
-    '*.*': {'ops': 'all', 'timeout': 60*60*24}, 
-    '*.*': {'ops': 'get', 'timeout': 60*60*24}, 
+    '*.*': {'ops': 'all', 'timeout': 60*60*24},
+    '*.*': {'ops': 'get', 'timeout': 60*60*24},
 }
